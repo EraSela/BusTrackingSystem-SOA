@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1320" viewBox="0 0 1800 1320">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 34px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 16px Arial, sans-serif; fill: #64748b; }
+      .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; rx: 12; }
+      .head { fill: #1e3a5f; }
+      .head-text { font: 700 19px Arial, sans-serif; fill: #ffffff; }
+      .field { font: 14px Consolas, monospace; fill: #1e293b; }
+      .key { font-weight: 700; fill: #b45309; }
+      .optional { fill: #64748b; }
+      .relation { fill: none; stroke: #475569; stroke-width: 2; }
+      .relation-label { font: 13px Arial, sans-serif; fill: #334155; }
+      .cardinality { font: 700 14px Arial, sans-serif; fill: #0f172a; }
+      .legend { font: 14px Arial, sans-serif; fill: #334155; }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1800" height="1320"/>
+  <text class="title" x="60" y="55">Bus Tracking System - Entity Relationship Diagram</text>
+  <text class="subtitle" x="60" y="84">Generated from the ASP.NET Core Entity Framework model</text>
+
+  <!-- Relationships are drawn first so entity cards remain readable. -->
+  <path class="relation" d="M380 280 C500 280 500 420 610 420"/>
+  <text class="relation-label" x="456" y="320">drives</text>
+  <text class="cardinality" x="388" y="272">0..1</text>
+  <text class="cardinality" x="575" y="412">0..*</text>
+
+  <path class="relation" d="M900 280 L900 420"/>
+  <text class="relation-label" x="910" y="357">operates</text>
+  <text class="cardinality" x="876" y="301">1</text>
+  <text class="cardinality" x="876" y="412">0..*</text>
+
+  <path class="relation" d="M1420 280 C1300 280 1300 420 1190 420"/>
+  <text class="relation-label" x="1295" y="320">defines</text>
+  <text class="cardinality" x="1390" y="272">0..1</text>
+  <text class="cardinality" x="1198" y="412">0..*</text>
+
+  <path class="relation" d="M250 390 L250 820"/>
+  <text class="relation-label" x="260" y="600">makes</text>
+  <text class="cardinality" x="228" y="414">1</text>
+  <text class="cardinality" x="228" y="811">0..*</text>
+
+  <path class="relation" d="M610 670 C470 670 470 820 380 820"/>
+  <text class="relation-label" x="468" y="734">contains</text>
+  <text class="cardinality" x="584" y="662">0..1</text>
+  <text class="cardinality" x="388" y="812">0..*</text>
+
+  <path class="relation" d="M900 390 C900 700 800 700 800 820"/>
+  <text class="relation-label" x="820" y="731">reports positions</text>
+  <text class="cardinality" x="878" y="414">1</text>
+  <text class="cardinality" x="778" y="812">0..*</text>
+
+  <path class="relation" d="M900 670 L900 820"/>
+  <text class="relation-label" x="910" y="757">records</text>
+  <text class="cardinality" x="876" y="694">0..1</text>
+  <text class="cardinality" x="876" y="812">0..*</text>
+
+  <path class="relation" d="M1190 670 C1300 670 1300 820 1390 820"/>
+  <text class="relation-label" x="1280" y="735">triggers</text>
+  <text class="cardinality" x="1198" y="662">1</text>
+  <text class="cardinality" x="1360" y="812">0..*</text>
+
+  <path class="relation" d="M380 360 C1610 360 1610 650 1550 820"/>
+  <text class="relation-label" x="1550" y="595">receives</text>
+  <text class="cardinality" x="388" y="352">1</text>
+  <text class="cardinality" x="1556" y="811">0..*</text>
+
+  <path class="relation" d="M480 1030 C760 1220 1120 1220 1390 1030"/>
+  <text class="relation-label" x="875" y="1210">may relate to</text>
+  <text class="cardinality" x="488" y="1047">0..1</text>
+  <text class="cardinality" x="1358" y="1047">0..*</text>
+
+  <!-- USERS -->
+  <g transform="translate(60 120)">
+    <rect class="box" width="320" height="270"/>
+    <path class="head" d="M12 0 H308 Q320 0 320 12 V46 H0 V12 Q0 0 12 0"/>
+    <text class="head-text" x="18" y="30">USERS</text>
+    <text class="field key" x="18" y="72">PK  Id : integer</text>
+    <text class="field" x="18" y="96">    FullName : varchar(100)</text>
+    <text class="field key" x="18" y="120">UK  Email : varchar(100)</text>
+    <text class="field" x="18" y="144">    PasswordHash : text</text>
+    <text class="field" x="18" y="168">    Role : UserRole</text>
+    <text class="field optional" x="18" y="192">    PhoneNumber : varchar(20)?</text>
+    <text class="field optional" x="18" y="216">    DeviceToken : text?</text>
+    <text class="field" x="18" y="240">    IsActive, CreatedAt</text>
+  </g>
+
+  <!-- BUSES -->
+  <g transform="translate(740 120)">
+    <rect class="box" width="320" height="270"/>
+    <path class="head" d="M12 0 H308 Q320 0 320 12 V46 H0 V12 Q0 0 12 0"/>
+    <text class="head-text" x="18" y="30">BUSES</text>
+    <text class="field key" x="18" y="72">PK  Id : integer</text>
+    <text class="field" x="18" y="102">    Name : varchar(50)</text>
+    <text class="field" x="18" y="132">    PlateNumber : varchar(20)</text>
+    <text class="field" x="18" y="162">    DepartureTime : interval</text>
+    <text class="field" x="18" y="192">    TotalSeats : integer</text>
+    <text class="field" x="18" y="222">    IsActive : boolean</text>
+  </g>
+
+  <!-- ROUTES -->
+  <g transform="translate(1420 120)">
+    <rect class="box" width="320" height="270"/>
+    <path class="head" d="M12 0 H308 Q320 0 320 12 V46 H0 V12 Q0 0 12 0"/>
+    <text class="head-text" x="18" y="30">ROUTES</text>
+    <text class="field key" x="18" y="72">PK  Id : integer</text>
+    <text class="field" x="18" y="102">    Name : varchar(100)</text>
+    <text class="field" x="18" y="132">    Origin : varchar(50)</text>
+    <text class="field" x="18" y="162">    Destination : varchar(50)</text>
+    <text class="field" x="18" y="192">    ExpectedDurationMinutes</text>
+    <text class="field" x="18" y="222">    IsActive : boolean</text>
+  </g>
+
+  <!-- TRIPS -->
+  <g transform="translate(610 420)">
+    <rect class="box" width="580" height="250"/>
+    <path class="head" d="M12 0 H568 Q580 0 580 12 V46 H0 V12 Q0 0 12 0"/>
+    <text class="head-text" x="18" y="30">TRIPS</text>
+    <text class="field key" x="18" y="72">PK  Id : integer</text>
+    <text class="field key" x="18" y="98">FK  BusId : integer</text>
+    <text class="field key" x="18" y="124">FK  DriverId : integer?</text>
+    <text class="field key" x="18" y="150">FK  RouteId : integer?</text>
+    <text class="field optional" x="18" y="176">    DeviceId : varchar(50)?</text>
+    <text class="field" x="300" y="72">ScheduledDeparture</text>
+    <text class="field optional" x="300" y="98">ActualDeparture?</text>
+    <text class="field" x="300" y="124">ScheduledArrival</text>
+    <text class="field optional" x="300" y="150">ActualArrival?</text>
+    <text class="field" x="300" y="176">Status : TripStatus</text>
+    <text class="field" x="300" y="202">CreatedAt</text>
+  </g>
+
+  <!-- RESERVATIONS -->
+  <g transform="translate(60 820)">
+    <rect class="box" width="420" height="340"/>
+    <path class="head" d="M12 0 H408 Q420 0 420 12 V46 H0 V12 Q0 0 12 0"/>
+    <text class="head-text" x="18" y="30">RESERVATIONS</text>
+    <text class="field key" x="18" y="72">PK  Id : integer</text>
+    <text class="field key" x="18" y="98">FK  UserId : integer</text>
+    <text class="field key" x="18" y="124">FK  TripId : integer?</text>
+    <text class="field" x="18" y="150">    SeatNumber : integer</text>
+    <text class="field" x="18" y="176">    IsVerified : boolean</text>
+    <text class="field optional" x="18" y="202">    QrCode : text?</text>
+    <text class="field" x="18" y="228">    CreatedAt : timestamptz</text>
+    <text class="field" x="18" y="254">    PickupPlaceName : text</text>
+    <text class="field" x="18" y="280">    PickupLatitude : double</text>
+    <text class="field" x="18" y="306">    PickupLongitude : double</text>
+  </g>
+
+  <!-- BUS LOCATIONS -->
+  <g transform="translate(590 820)">
+    <rect class="box" width="420" height="340"/>
+    <path class="head" d="M12 0 H408 Q420 0 420 12 V46 H0 V12 Q0 0 12 0"/>
+    <text class="head-text" x="18" y="30">BUS_LOCATIONS</text>
+    <text class="field key" x="18" y="72">PK  Id : integer</text>
+    <text class="field key" x="18" y="98">FK  BusId : integer</text>
+    <text class="field key" x="18" y="124">FK  TripId : integer?</text>
+    <text class="field" x="18" y="150">    Latitude : double</text>
+    <text class="field" x="18" y="176">    Longitude : double</text>
+    <text class="field optional" x="18" y="202">    Speed, Heading, Accuracy?</text>
+    <text class="field optional" x="18" y="228">    Status : varchar(20)?</text>
+    <text class="field optional" x="18" y="254">    Signal : integer?</text>
+    <text class="field" x="18" y="280">    Timestamp : timestamptz</text>
+  </g>
+
+  <!-- NOTIFICATIONS -->
+  <g transform="translate(1390 820)">
+    <rect class="box" width="350" height="340"/>
+    <path class="head" d="M12 0 H338 Q350 0 350 12 V46 H0 V12 Q0 0 12 0"/>
+    <text class="head-text" x="18" y="30">NOTIFICATIONS</text>
+    <text class="field key" x="18" y="72">PK  Id : integer</text>
+    <text class="field key" x="18" y="98">FK  TripId : integer</text>
+    <text class="field key" x="18" y="124">FK  UserId : integer</text>
+    <text class="field key" x="18" y="150">FK  ReservationId : integer?</text>
+    <text class="field" x="18" y="176">    Type : NotificationType</text>
+    <text class="field" x="18" y="202">    Message : text</text>
+    <text class="field" x="18" y="228">    IsRead : boolean</text>
+    <text class="field" x="18" y="254">    CreatedAt : timestamptz</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(60 1240)">
+    <text class="legend key" x="0" y="0">PK = Primary Key</text>
+    <text class="legend key" x="160" y="0">FK = Foreign Key</text>
+    <text class="legend key" x="320" y="0">UK = Unique Key</text>
+    <text class="legend optional" x="480" y="0">? = Optional / nullable</text>
+    <text class="legend" x="690" y="0">Cardinality: 1 = exactly one, 0..1 = optional one, 0..* = zero or many</text>
+  </g>
+</svg>
