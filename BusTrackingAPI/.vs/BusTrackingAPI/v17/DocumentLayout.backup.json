@@ -1,0 +1,948 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\services\\implementations\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\services\\implementations\\reservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\services\\implementations\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\services\\implementations\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\dtos\\busdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\dtos\\busdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\controllers\\gpscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\controllers\\gpscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\controllers\\notificationcontrollercs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\controllers\\notificationcontrollercs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\controllers\\tripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\controllers\\tripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\services\\interfaces\\ireservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\services\\interfaces\\ireservationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\services\\implementations\\buslocationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\services\\implementations\\buslocationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\services\\implementations\\tripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\services\\implementations\\tripservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\repositories\\implementations\\buslocationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\repositories\\implementations\\buslocationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\controllers\\buslocationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\controllers\\buslocationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\services\\interfaces\\ibuslocationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\services\\interfaces\\ibuslocationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\dtos\\etadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\dtos\\etadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\services\\implementations\\busservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\services\\implementations\\busservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\services\\interfaces\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\services\\interfaces\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\repositories\\interfaces\\inotificationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\repositories\\interfaces\\inotificationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\repositories\\implementations\\notificationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\repositories\\implementations\\notificationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\dtos\\notificationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\dtos\\notificationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\dtos\\gpsreceivedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\dtos\\gpsreceivedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\repositories\\implementations\\reservationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\repositories\\implementations\\reservationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\repositories\\implementations\\busrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\repositories\\implementations\\busrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\dtos\\tripdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\dtos\\tripdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\repositories\\implementations\\triprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\repositories\\implementations\\triprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\repositories\\interfaces\\itriprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\repositories\\interfaces\\itriprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\models\\trip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\models\\trip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\repositories\\interfaces\\ireservationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\repositories\\interfaces\\ireservationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\repositories\\interfaces\\ibusrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\repositories\\interfaces\\ibusrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\controllers\\buscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\controllers\\buscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\services\\implementations\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\services\\implementations\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\services\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\services\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\models\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\models\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\helpers\\geohelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\helpers\\geohelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\dtos\\buslocationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\dtos\\buslocationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\models\\buslocation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\models\\buslocation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\repositories\\implementations\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\repositories\\implementations\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\repositories\\interfaces\\ibuslocationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\repositories\\interfaces\\ibuslocationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\dtos\\reservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\dtos\\reservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\models\\bus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\models\\bus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\services\\implementations\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\services\\implementations\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\services\\interfaces\\ibusservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\services\\interfaces\\ibusservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\source\\repos\\BusTrackingAPI\\BusTrackingAPI\\Migrations\\20260430201434_FullUpdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\migrations\\20260507203929_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\migrations\\20260507203929_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\migrations\\20260528121043_adddeviceidtotrip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\migrations\\20260528121043_adddeviceidtotrip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|c:\\users\\user\\desktop\\capstone\\bustrackingapi\\bustrackingapi\\migrations\\20260528113709_addpickupalreadypassednotification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F299FDF7-1C2D-4E7C-94CE-2DABA898F584}|BusTrackingAPI\\BusTrackingAPI.csproj|solutionrelative:bustrackingapi\\migrations\\20260528113709_addpickupalreadypassednotification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 105,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReservationService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\ReservationService.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Services\\Implementations\\ReservationService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\ReservationService.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Services\\Implementations\\ReservationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T20:12:38.872Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NotificationControllercs.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\NotificationControllercs.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Controllers\\NotificationControllercs.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\NotificationControllercs.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Controllers\\NotificationControllercs.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAUwCoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T21:00:27.996Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "BusLocationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Implementations\\BusLocationRepository.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Repositories\\Implementations\\BusLocationRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Implementations\\BusLocationRepository.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Repositories\\Implementations\\BusLocationRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:02:51.193Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\UserDTO.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\DTOs\\UserDTO.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\UserDTO.cs",
+              "RelativeToolTip": "BusTrackingAPI\\DTOs\\UserDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:13:34.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\NotificationService.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Services\\Implementations\\NotificationService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\NotificationService.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Services\\Implementations\\NotificationService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwDgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T13:01:56.138Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T21:10:55.178Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BusDTO.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\BusDTO.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\DTOs\\BusDTO.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\BusDTO.cs",
+              "RelativeToolTip": "BusTrackingAPI\\DTOs\\BusDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:13:58.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GpsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\GpsController.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Controllers\\GpsController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\GpsController.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Controllers\\GpsController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAkwDEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T20:04:53.464Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "BusLocationController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\BusLocationController.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Controllers\\BusLocationController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\BusLocationController.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Controllers\\BusLocationController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAQwDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T17:18:29.684Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BusLocationService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\BusLocationService.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Services\\Implementations\\BusLocationService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\BusLocationService.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Services\\Implementations\\BusLocationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T20:11:42.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Program.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Program.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T19:42:23.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IReservationService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Interfaces\\IReservationService.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Services\\Interfaces\\IReservationService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Interfaces\\IReservationService.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Services\\Interfaces\\IReservationService.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwA8AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:07:37.73Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\appsettings.json",
+              "RelativeToolTip": "BusTrackingAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-26T19:35:22.197Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ReservationController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\ReservationController.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Controllers\\ReservationController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\ReservationController.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Controllers\\ReservationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIEAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T17:19:24.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TripController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\TripController.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Controllers\\TripController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\TripController.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Controllers\\TripController.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAiwHQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T21:19:25.886Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TripService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\TripService.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Services\\Implementations\\TripService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\TripService.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Services\\Implementations\\TripService.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAcwNEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T19:26:46.399Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "INotificationService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Interfaces\\INotificationService.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Services\\Interfaces\\INotificationService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Interfaces\\INotificationService.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Services\\Interfaces\\INotificationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T13:01:10.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "BusService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\BusService.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Services\\Implementations\\BusService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\BusService.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Services\\Implementations\\BusService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T20:12:11.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "EtaDTO.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\EtaDTO.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\DTOs\\EtaDTO.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\EtaDTO.cs",
+              "RelativeToolTip": "BusTrackingAPI\\DTOs\\EtaDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T14:25:36.96Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "NotificationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Implementations\\NotificationRepository.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Repositories\\Implementations\\NotificationRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Implementations\\NotificationRepository.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Repositories\\Implementations\\NotificationRepository.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAwwDkAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T19:46:33.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IBusLocationService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Interfaces\\IBusLocationService.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Services\\Interfaces\\IBusLocationService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Interfaces\\IBusLocationService.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Services\\Interfaces\\IBusLocationService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAYwBUAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:06:58.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "INotificationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Interfaces\\INotificationRepository.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Repositories\\Interfaces\\INotificationRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Interfaces\\INotificationRepository.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Repositories\\Interfaces\\INotificationRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T19:46:08.426Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ExceptionHandlingMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwBsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T19:25:06.423Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "NotificationDTO.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\NotificationDTO.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\DTOs\\NotificationDTO.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\NotificationDTO.cs",
+              "RelativeToolTip": "BusTrackingAPI\\DTOs\\NotificationDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T12:58:43.306Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ReservationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Implementations\\ReservationRepository.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Repositories\\Implementations\\ReservationRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Implementations\\ReservationRepository.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Repositories\\Implementations\\ReservationRepository.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAgwCYAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:03:26.415Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ITripRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Interfaces\\ITripRepository.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Repositories\\Interfaces\\ITripRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Interfaces\\ITripRepository.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Repositories\\Interfaces\\ITripRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T20:32:16.339Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Trip.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\Trip.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Models\\Trip.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\Trip.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Models\\Trip.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswA0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T20:03:22.997Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Mappings\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Mappings\\MappingProfile.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Mappings\\MappingProfile.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Mappings\\MappingProfile.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAiwFQAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:19:43.339Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "TripRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Implementations\\TripRepository.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Repositories\\Implementations\\TripRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Implementations\\TripRepository.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Repositories\\Implementations\\TripRepository.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAkwE4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T20:32:21.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "TripDTO.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\TripDTO.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\DTOs\\TripDTO.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\TripDTO.cs",
+              "RelativeToolTip": "BusTrackingAPI\\DTOs\\TripDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T19:31:32.07Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "GpsReceiveDTO.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\GpsReceiveDTO.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\DTOs\\GpsReceiveDTO.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\GpsReceiveDTO.cs",
+              "RelativeToolTip": "BusTrackingAPI\\DTOs\\GpsReceiveDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T20:04:19.257Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "20260528121043_AddDeviceIdToTrip.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Migrations\\20260528121043_AddDeviceIdToTrip.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Migrations\\20260528121043_AddDeviceIdToTrip.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Migrations\\20260528121043_AddDeviceIdToTrip.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Migrations\\20260528121043_AddDeviceIdToTrip.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T12:10:44.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "BusRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Implementations\\BusRepository.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Repositories\\Implementations\\BusRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Implementations\\BusRepository.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Repositories\\Implementations\\BusRepository.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAowD4AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:02:17.747Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IReservationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Interfaces\\IReservationRepository.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Repositories\\Interfaces\\IReservationRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Interfaces\\IReservationRepository.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Repositories\\Interfaces\\IReservationRepository.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA6wB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:01:08.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\Notification.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Models\\Notification.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\Notification.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Models\\Notification.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAA+wCgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T19:44:14.517Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "IBusRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Interfaces\\IBusRepository.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Repositories\\Interfaces\\IBusRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Interfaces\\IBusRepository.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Repositories\\Interfaces\\IBusRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAiwAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:00:03.237Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "20260528113709_AddPickupAlreadyPassedNotification.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Migrations\\20260528113709_AddPickupAlreadyPassedNotification.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Migrations\\20260528113709_AddPickupAlreadyPassedNotification.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Migrations\\20260528113709_AddPickupAlreadyPassedNotification.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Migrations\\20260528113709_AddPickupAlreadyPassedNotification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T11:37:10.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "BusController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\BusController.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Controllers\\BusController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\BusController.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Controllers\\BusController.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAiwFYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T17:17:59.724Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Controllers\\UserController.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Controllers\\UserController.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAiwDsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T17:18:50.777Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\AuthService.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Services\\Implementations\\AuthService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\AuthService.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Services\\Implementations\\AuthService.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAiwFgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T21:12:40.657Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Interfaces\\IAuthService.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Services\\Interfaces\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Interfaces\\IAuthService.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Services\\Interfaces\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T21:12:05.267Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\User.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\User.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Models\\User.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAswCMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T19:45:30.424Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "UserRole.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\UserRole.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Models\\UserRole.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\UserRole.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Models\\UserRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T20:03:00.445Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "BusLocation.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\BusLocation.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Models\\BusLocation.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\BusLocation.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Models\\BusLocation.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAgwCkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T19:46:55.552Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "GeoHelper.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Helpers\\GeoHelper.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Helpers\\GeoHelper.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Helpers\\GeoHelper.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Helpers\\GeoHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T20:27:43.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "BusLocationDTO.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\BusLocationDTO.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\DTOs\\BusLocationDTO.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\BusLocationDTO.cs",
+              "RelativeToolTip": "BusTrackingAPI\\DTOs\\BusLocationDTO.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAAwDgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:18:04.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "20260507203929_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Migrations\\20260507203929_InitialCreate.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Migrations\\20260507203929_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Migrations\\20260507203929_InitialCreate.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Migrations\\20260507203929_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T20:39:29.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Implementations\\UserRepository.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Repositories\\Implementations\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Implementations\\UserRepository.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Repositories\\Implementations\\UserRepository.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAwwD8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:01:50.843Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAcwFsAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T17:30:20.751Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "IBusLocationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Interfaces\\IBusLocationRepository.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Repositories\\Interfaces\\IBusLocationRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Interfaces\\IBusLocationRepository.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Repositories\\Interfaces\\IBusLocationRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:00:36.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "ReservationDTO.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\ReservationDTO.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\DTOs\\ReservationDTO.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\DTOs\\ReservationDTO.cs",
+              "RelativeToolTip": "BusTrackingAPI\\DTOs\\ReservationDTO.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAA5wDoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:18:33.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "Reservation.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\Reservation.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Models\\Reservation.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\Reservation.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Models\\Reservation.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAYwCkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T19:47:45.89Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "Bus.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\Bus.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Models\\Bus.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Models\\Bus.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Models\\Bus.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAkwCYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T19:46:23.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\UserService.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Services\\Implementations\\UserService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Implementations\\UserService.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Services\\Implementations\\UserService.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAYwD4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:09:00.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Interfaces\\IUserService.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Services\\Interfaces\\IUserService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Interfaces\\IUserService.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Services\\Interfaces\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:05:53.548Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "IBusService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Interfaces\\IBusService.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Services\\Interfaces\\IBusService.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Services\\Interfaces\\IBusService.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Services\\Interfaces\\IBusService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T20:06:24.362Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "20260430201434_FullUpdate.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\BusTrackingAPI\\BusTrackingAPI\\Migrations\\20260430201434_FullUpdate.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\source\\repos\\BusTrackingAPI\\BusTrackingAPI\\Migrations\\20260430201434_FullUpdate.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\BusTrackingAPI\\BusTrackingAPI\\Migrations\\20260430201434_FullUpdate.cs",
+              "RelativeToolTip": "..\\..\\..\\source\\repos\\BusTrackingAPI\\BusTrackingAPI\\Migrations\\20260430201434_FullUpdate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T20:14:34.964Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "BusTrackingAPI\\Repositories\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\CAPSTONE\\BusTrackingAPI\\BusTrackingAPI\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "BusTrackingAPI\\Repositories\\Interfaces\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T19:58:51.805Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
