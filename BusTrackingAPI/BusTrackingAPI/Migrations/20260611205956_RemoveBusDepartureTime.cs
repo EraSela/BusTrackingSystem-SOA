@@ -11,9 +11,11 @@ namespace BusTrackingAPI.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "DepartureTime",
-                table: "Buses");
+            migrationBuilder.Sql(
+                """
+                ALTER TABLE "Buses"
+                DROP COLUMN IF EXISTS "DepartureTime";
+                """);
         }
 
         /// <inheritdoc />
