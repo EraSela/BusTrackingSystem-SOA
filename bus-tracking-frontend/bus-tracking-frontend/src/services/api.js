@@ -1,8 +1,12 @@
 import axios from 'axios';
 import { isTokenValid } from '../utils/auth';
 
+const apiBaseUrl = (
+  import.meta.env.VITE_API_BASE_URL || 'https://localhost:7113/api'
+).replace(/\/+$/, '');
+
 const API = axios.create({
-  baseURL: 'https://localhost:7113/api',
+  baseURL: apiBaseUrl,
 });
 
 API.interceptors.request.use((config) => {

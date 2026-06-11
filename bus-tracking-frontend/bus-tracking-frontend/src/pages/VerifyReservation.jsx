@@ -22,7 +22,11 @@ export default function VerifyReservation() {
   }
 
   useEffect(() => {
+    // Reload the reservation whenever the scanned QR code changes.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchReservation()
+    // fetchReservation is scoped to the current QR code.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qrCode])
 
   const verify = async () => {

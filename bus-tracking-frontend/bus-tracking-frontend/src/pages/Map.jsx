@@ -54,6 +54,8 @@ export default function Map() {
   }
 
   useEffect(() => {
+    // Initial load and polling intentionally update component state.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchLive()
     const interval = setInterval(fetchLive, 5000)
     return () => clearInterval(interval)

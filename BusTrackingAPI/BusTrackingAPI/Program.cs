@@ -8,14 +8,38 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Npgsql;
 using System.Text;
 using BusTrackingAPI.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 #region DATABASE
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+
+if (!string.IsNullOrWhiteSpace(databaseUrl))
+{
+    var databaseUri = new Uri(databaseUrl);
+    var credentials = databaseUri.UserInfo.Split(':', 2);
+
+    connectionString = new NpgsqlConnectionStringBuilder
+    {
+        Host = databaseUri.Host,
+        Port = databaseUri.Port,
+        Username = Uri.UnescapeDataString(credentials[0]),
+        Password = credentials.Length > 1
+            ? Uri.UnescapeDataString(credentials[1])
+            : string.Empty,
+        Database = databaseUri.AbsolutePath.TrimStart('/'),
+        SslMode = SslMode.Prefer
+    }.ConnectionString;
+}
+
+if (string.IsNullOrWhiteSpace(connectionString))
+    throw new InvalidOperationException("A database connection string is required.");
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(
-        builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(connectionString));
 #endregion
 
 #region CORS
@@ -154,7 +178,13 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGet("/health", () => Results.Ok(new { status = "healthy" }));
 #endregion
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    await db.Database.MigrateAsync();
+}
 
 app.Run();

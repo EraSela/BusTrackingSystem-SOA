@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: bus-tracking-api
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./BusTrackingAPI/BusTrackingAPI/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bus-tracking-db
+          property: connectionString
+      - key: JwtSettings__SecretKey
+        generateValue: true
+      - key: JwtSettings__Issuer
+        value: BusTrackingAPI
+      - key: JwtSettings__Audience
+        value: BusTrackingClient
+
+databases:
+  - name: bus-tracking-db
+    databaseName: bus_tracking
+    user: bus_tracking_user
+    plan: free
+    region: frankfurt

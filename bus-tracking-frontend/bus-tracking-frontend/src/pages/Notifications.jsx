@@ -22,6 +22,8 @@ export default function Notifications() {
   }
 
   useEffect(() => {
+    // Initial API loading intentionally updates component state.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchNotifications()
   }, [])
 
