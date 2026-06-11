@@ -25,7 +25,7 @@ if (!string.IsNullOrWhiteSpace(databaseUrl))
     connectionString = new NpgsqlConnectionStringBuilder
     {
         Host = databaseUri.Host,
-        Port = databaseUri.Port,
+        Port = databaseUri.IsDefaultPort ? 5432 : databaseUri.Port,
         Username = Uri.UnescapeDataString(credentials[0]),
         Password = credentials.Length > 1
             ? Uri.UnescapeDataString(credentials[1])
