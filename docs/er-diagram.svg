@@ -92,15 +92,14 @@
 
   <!-- BUSES -->
   <g transform="translate(740 120)">
-    <rect class="box" width="320" height="270"/>
+    <rect class="box" width="320" height="240"/>
     <path class="head" d="M12 0 H308 Q320 0 320 12 V46 H0 V12 Q0 0 12 0"/>
     <text class="head-text" x="18" y="30">BUSES</text>
     <text class="field key" x="18" y="72">PK  Id : integer</text>
     <text class="field" x="18" y="102">    Name : varchar(50)</text>
     <text class="field" x="18" y="132">    PlateNumber : varchar(20)</text>
-    <text class="field" x="18" y="162">    DepartureTime : interval</text>
-    <text class="field" x="18" y="192">    TotalSeats : integer</text>
-    <text class="field" x="18" y="222">    IsActive : boolean</text>
+    <text class="field" x="18" y="162">    TotalSeats : integer</text>
+    <text class="field" x="18" y="192">    IsActive : boolean</text>
   </g>
 
   <!-- ROUTES -->

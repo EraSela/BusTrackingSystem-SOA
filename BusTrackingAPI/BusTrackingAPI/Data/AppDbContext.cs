@@ -23,20 +23,17 @@ namespace BusTrackingAPI.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Bus>().HasData(
-                new Bus { Id = 1, Name = "Bus 1", PlateNumber = "BUS-0500", DepartureTime = new TimeSpan(5, 0, 0), TotalSeats = 40, IsActive = true },
-                new Bus { Id = 2, Name = "Bus 2", PlateNumber = "BUS-0800", DepartureTime = new TimeSpan(8, 0, 0), TotalSeats = 40, IsActive = true },
-                new Bus { Id = 3, Name = "Bus 3", PlateNumber = "BUS-1200", DepartureTime = new TimeSpan(12, 0, 0), TotalSeats = 40, IsActive = true },
-
-                new Bus { Id = 4, Name = "Bus 4", PlateNumber = "BUS-1100", DepartureTime = new TimeSpan(11, 0, 0), TotalSeats = 40, IsActive = true },
-                new Bus { Id = 5, Name = "Bus 5", PlateNumber = "BUS-1315", DepartureTime = new TimeSpan(13, 15, 0), TotalSeats = 40, IsActive = true },
-                new Bus { Id = 6, Name = "Bus 6", PlateNumber = "BUS-1620", DepartureTime = new TimeSpan(16, 20, 0), TotalSeats = 40, IsActive = true },
-
-                new Bus { Id = 7, Name = "Bus 7", PlateNumber = "BUS-T1200", DepartureTime = new TimeSpan(12, 0, 0), TotalSeats = 40, IsActive = true },
-                new Bus { Id = 8, Name = "Bus 8", PlateNumber = "BUS-T1415", DepartureTime = new TimeSpan(14, 15, 0), TotalSeats = 40, IsActive = true },
-                new Bus { Id = 9, Name = "Bus 9", PlateNumber = "BUS-T1720", DepartureTime = new TimeSpan(17, 20, 0), TotalSeats = 40, IsActive = true },
-
-                new Bus { Id = 10, Name = "Bus 10", PlateNumber = "BUS-1700", DepartureTime = new TimeSpan(17, 0, 0), TotalSeats = 40, IsActive = true },
-                new Bus { Id = 11, Name = "Bus 11", PlateNumber = "BUS-2100", DepartureTime = new TimeSpan(21, 0, 0), TotalSeats = 40, IsActive = true }
+                new Bus { Id = 1, Name = "Bus 1", PlateNumber = "BUS-0500", TotalSeats = 40, IsActive = true },
+                new Bus { Id = 2, Name = "Bus 2", PlateNumber = "BUS-0800", TotalSeats = 40, IsActive = true },
+                new Bus { Id = 3, Name = "Bus 3", PlateNumber = "BUS-1200", TotalSeats = 40, IsActive = true },
+                new Bus { Id = 4, Name = "Bus 4", PlateNumber = "BUS-1100", TotalSeats = 40, IsActive = true },
+                new Bus { Id = 5, Name = "Bus 5", PlateNumber = "BUS-1315", TotalSeats = 40, IsActive = true },
+                new Bus { Id = 6, Name = "Bus 6", PlateNumber = "BUS-1620", TotalSeats = 40, IsActive = true },
+                new Bus { Id = 7, Name = "Bus 7", PlateNumber = "BUS-T1200", TotalSeats = 40, IsActive = true },
+                new Bus { Id = 8, Name = "Bus 8", PlateNumber = "BUS-T1415", TotalSeats = 40, IsActive = true },
+                new Bus { Id = 9, Name = "Bus 9", PlateNumber = "BUS-T1720", TotalSeats = 40, IsActive = true },
+                new Bus { Id = 10, Name = "Bus 10", PlateNumber = "BUS-1700", TotalSeats = 40, IsActive = true },
+                new Bus { Id = 11, Name = "Bus 11", PlateNumber = "BUS-2100", TotalSeats = 40, IsActive = true }
             );
 
             modelBuilder.Entity<BusRoute>().HasData(

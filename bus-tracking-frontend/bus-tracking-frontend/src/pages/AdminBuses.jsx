@@ -5,7 +5,6 @@ import API from '../services/api'
 const emptyForm = {
   name: '',
   plateNumber: '',
-  departureTime: '',
   totalSeats: 40,
   isActive: true
 }
@@ -46,7 +45,6 @@ export default function AdminBuses() {
     const payload = {
       name: form.name.trim(),
       plateNumber: form.plateNumber.trim(),
-      departureTime: `${form.departureTime}:00`,
       totalSeats: Number(form.totalSeats),
       ...(editingId ? {
         isActive: form.isActive
@@ -76,7 +74,6 @@ export default function AdminBuses() {
     setForm({
       name: bus.name,
       plateNumber: bus.plateNumber,
-      departureTime: bus.departureTime?.substring(0, 5) || '',
       totalSeats: bus.totalSeats,
       isActive: bus.isActive
     })
@@ -131,7 +128,6 @@ export default function AdminBuses() {
           <form onSubmit={submit} className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
             <Field label="Bus name" value={form.name} onChange={value => setForm({ ...form, name: value })} />
             <Field label="Plate number" value={form.plateNumber} onChange={value => setForm({ ...form, plateNumber: value })} />
-            <Field label="Departure time" type="time" value={form.departureTime} onChange={value => setForm({ ...form, departureTime: value })} />
             <Field label="Total seats" type="number" min="1" max="100" value={form.totalSeats} onChange={value => setForm({ ...form, totalSeats: value })} />
 
             {editingId && (
@@ -164,7 +160,7 @@ export default function AdminBuses() {
             <table className="w-full min-w-[900px] text-left text-sm">
               <thead className="bg-zinc-50 text-zinc-500">
                 <tr>
-                  {['Bus', 'Plate', 'Departure', 'Seats', 'Status', 'Actions'].map(label => (
+                  {['Bus', 'Plate', 'Seats', 'Status', 'Actions'].map(label => (
                     <th key={label} className="px-6 py-4 font-semibold">{label}</th>
                   ))}
                 </tr>
@@ -174,7 +170,6 @@ export default function AdminBuses() {
                   <tr key={bus.id} className="border-t border-zinc-100">
                     <td className="px-6 py-4 font-semibold text-zinc-950">{bus.name}</td>
                     <td className="px-6 py-4">{bus.plateNumber}</td>
-                    <td className="px-6 py-4">{bus.departureTime?.substring(0, 5)}</td>
                     <td className="px-6 py-4">{bus.totalSeats}</td>
                     <td className="px-6 py-4">
                       <span className={`rounded-full px-3 py-1 text-xs font-semibold ${

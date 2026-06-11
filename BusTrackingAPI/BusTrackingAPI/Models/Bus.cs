@@ -15,8 +15,6 @@ namespace BusTrackingAPI.Models
         [MaxLength(20)]
         public string PlateNumber { get; set; } = string.Empty;
 
-        public TimeSpan DepartureTime { get; set; }
-
         [Range(1, 100)]
         public int TotalSeats { get; set; } = 40;
 

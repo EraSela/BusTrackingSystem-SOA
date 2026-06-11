@@ -39,10 +39,10 @@ namespace BusTrackingAPI.Mappings
             CreateMap<BusLocation, LiveLocationDTO>()
                 .ForMember(dest => dest.BusName,
                     opt => opt.MapFrom(src => src.Bus.Name))
-                .ForMember(dest => dest.DepartureTime,
+                .ForMember(dest => dest.ScheduledDeparture,
                     opt => opt.MapFrom(src => src.Trip != null
-                        ? src.Trip.ScheduledDeparture.TimeOfDay
-                        : src.Bus.DepartureTime))
+                        ? src.Trip.ScheduledDeparture
+                        : (DateTime?)null))
                 .ForMember(dest => dest.RouteName,
                     opt => opt.MapFrom(src => src.Trip != null && src.Trip.Route != null
                         ? src.Trip.Route.Name

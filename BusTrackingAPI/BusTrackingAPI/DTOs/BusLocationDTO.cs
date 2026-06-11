@@ -56,7 +56,7 @@ namespace BusTrackingAPI.DTOs
         public string RouteName { get; set; } = string.Empty;
         public string BusName { get; set; } = string.Empty;
 
-        public TimeSpan DepartureTime { get; set; }
+        public DateTime? ScheduledDeparture { get; set; }
 
         public double Latitude { get; set; }
         public double Longitude { get; set; }

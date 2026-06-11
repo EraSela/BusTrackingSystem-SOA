@@ -122,7 +122,13 @@ export default function Map() {
                       </p>
 
                       <p className="text-sm text-gray-500 mt-2">
-                        Departure {bus.departureTime?.substring(0, 5) || 'N/A'}
+                        {bus.routeName || 'Active trip'}
+                        {bus.scheduledDeparture
+                          ? ` - departs ${new Date(bus.scheduledDeparture).toLocaleTimeString([], {
+                              hour: '2-digit',
+                              minute: '2-digit'
+                            })}`
+                          : ''}
                       </p>
                     </div>
 

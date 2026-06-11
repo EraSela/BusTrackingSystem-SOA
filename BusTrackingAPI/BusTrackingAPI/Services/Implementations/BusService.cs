@@ -57,9 +57,6 @@ namespace BusTrackingAPI.Services.Implementations
             if (dto.PlateNumber != null)
                 bus.PlateNumber = dto.PlateNumber;
 
-            if (dto.DepartureTime.HasValue)
-                bus.DepartureTime = dto.DepartureTime.Value;
-
             if (dto.TotalSeats.HasValue)
                 bus.TotalSeats = dto.TotalSeats.Value;
 
