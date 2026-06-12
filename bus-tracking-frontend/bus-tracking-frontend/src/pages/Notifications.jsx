@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import API from '../services/api'
+import { getCurrentUser } from '../utils/auth'
 
 const notificationTypeLabel = {
   0: 'Delay',
@@ -9,23 +10,24 @@ const notificationTypeLabel = {
 }
 
 export default function Notifications() {
+  const isAdmin = getCurrentUser().role === 'Admin'
   const [notifications, setNotifications] = useState([])
   const [error, setError] = useState('')
 
-  const fetchNotifications = async () => {
+  const fetchNotifications = useCallback(async () => {
     try {
-      const res = await API.get('/notifications/my')
+      const res = await API.get(isAdmin ? '/notifications' : '/notifications/my')
       setNotifications(res.data)
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to load notifications')
     }
-  }
+  }, [isAdmin])
 
   useEffect(() => {
     // Initial API loading intentionally updates component state.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchNotifications()
-  }, [])
+  }, [fetchNotifications])
 
   const markAsRead = async (id) => {
     try {
@@ -103,7 +105,7 @@ export default function Notifications() {
                     </p>
                   </div>
 
-                  {!n.isRead && (
+                  {!isAdmin && !n.isRead && (
                     <button
                       onClick={() => markAsRead(n.id)}
                       className="rounded-full bg-black px-5 py-2 text-sm font-semibold text-white hover:bg-zinc-800 transition"
