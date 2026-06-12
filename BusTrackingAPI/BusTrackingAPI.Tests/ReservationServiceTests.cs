@@ -2,6 +2,7 @@ using BusTrackingAPI.DTOs;
 using BusTrackingAPI.Models;
 using BusTrackingAPI.Repositories.Interfaces;
 using BusTrackingAPI.Services.Implementations;
+using BusTrackingAPI.Services.Interfaces;
 using Moq;
 
 namespace BusTrackingAPI.Tests;
@@ -16,8 +17,9 @@ public class ReservationServiceTests
     {
         var trip = CreateTrip();
         var dto = CreateReservation();
-        _tripRepo.Setup(repo => repo.GetByIdAsync(dto.TripId)).ReturnsAsync(trip);
-        _reservationRepo.Setup(repo => repo.IsSeatTakenAsync(dto.TripId, dto.SeatNumber)).ReturnsAsync(false);
+        var tripId = dto.TripId!.Value;
+        _tripRepo.Setup(repo => repo.GetByIdAsync(tripId)).ReturnsAsync(trip);
+        _reservationRepo.Setup(repo => repo.IsSeatTakenAsync(tripId, dto.SeatNumber)).ReturnsAsync(false);
         _reservationRepo.Setup(repo => repo.CreateAsync(It.IsAny<Reservation>()))
             .ReturnsAsync((Reservation reservation) =>
             {
@@ -38,8 +40,9 @@ public class ReservationServiceTests
     public async Task CreateReservation_ShouldThrowException_WhenSeatIsAlreadyTaken()
     {
         var dto = CreateReservation();
-        _tripRepo.Setup(repo => repo.GetByIdAsync(dto.TripId)).ReturnsAsync(CreateTrip());
-        _reservationRepo.Setup(repo => repo.IsSeatTakenAsync(dto.TripId, dto.SeatNumber)).ReturnsAsync(true);
+        var tripId = dto.TripId!.Value;
+        _tripRepo.Setup(repo => repo.GetByIdAsync(tripId)).ReturnsAsync(CreateTrip());
+        _reservationRepo.Setup(repo => repo.IsSeatTakenAsync(tripId, dto.SeatNumber)).ReturnsAsync(true);
 
         var exception = await Assert.ThrowsAsync<InvalidOperationException>(
             () => CreateService().CreateAsync(dto));
@@ -76,6 +79,7 @@ public class ReservationServiceTests
             Mock.Of<IBusLocationRepository>(),
             _tripRepo.Object,
             Mock.Of<INotificationRepository>(),
+            Mock.Of<IRecurringTripScheduleService>(),
             TestHelpers.CreateMapper(),
             TestHelpers.CreateHttpContext(1, role));
     }

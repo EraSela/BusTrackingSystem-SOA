@@ -2,7 +2,6 @@ using BusTrackingAPI.DTOs;
 using BusTrackingAPI.Models;
 using BusTrackingAPI.Repositories.Interfaces;
 using BusTrackingAPI.Services.Implementations;
-using BusTrackingAPI.Services.Interfaces;
 using Moq;
 
 namespace BusTrackingAPI.Tests;
@@ -140,7 +139,6 @@ public class TripServiceTests
             busRepo,
             userRepo,
             routeRepo,
-            Mock.Of<IRecurringTripScheduleService>(),
             TestHelpers.CreateMapper(),
             TestHelpers.CreateHttpContext(userId, role));
     }

@@ -23,7 +23,7 @@ public class ControllerTests
         var response = new ReservationDTO
         {
             Id = 10,
-            TripId = request.TripId,
+              TripId = request.TripId!.Value,
             SeatNumber = request.SeatNumber,
         };
 

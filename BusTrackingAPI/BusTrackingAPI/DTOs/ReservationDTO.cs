@@ -34,7 +34,11 @@ namespace BusTrackingAPI.DTOs
     public class CreateReservationDTO
     {
         [Range(1, int.MaxValue)]
-        public int TripId { get; set; }
+        public int? TripId { get; set; }
+
+        public string? ScheduleId { get; set; }
+
+        public DateOnly? TravelDate { get; set; }
 
         [Required]
         [Range(1, 100)]
@@ -48,6 +52,18 @@ namespace BusTrackingAPI.DTOs
 
         [Required]
         public double PickupLongitude { get; set; }
+    }
+
+    public class TimetableOptionDTO
+    {
+        public string Id { get; set; } = string.Empty;
+        public string RouteName { get; set; } = string.Empty;
+        public string Origin { get; set; } = string.Empty;
+        public string Destination { get; set; } = string.Empty;
+        public string DepartureTime { get; set; } = string.Empty;
+        public int ExpectedDurationMinutes { get; set; }
+        public int TotalSeats { get; set; }
+        public int[] AvailableDays { get; set; } = Array.Empty<int>();
     }
 
     public class VerifyReservationDTO

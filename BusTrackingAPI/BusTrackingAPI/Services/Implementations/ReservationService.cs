@@ -16,6 +16,7 @@ namespace BusTrackingAPI.Services.Implementations
         private readonly IBusLocationRepository _locationRepo;
         private readonly ITripRepository _tripRepo;
         private readonly INotificationRepository _notificationRepo;
+        private readonly IRecurringTripScheduleService _recurringSchedule;
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
@@ -25,6 +26,7 @@ namespace BusTrackingAPI.Services.Implementations
             IBusLocationRepository locationRepo,
             ITripRepository tripRepo,
             INotificationRepository notificationRepo,
+            IRecurringTripScheduleService recurringSchedule,
             IMapper mapper,
             IHttpContextAccessor httpContextAccessor)
         {
@@ -32,6 +34,7 @@ namespace BusTrackingAPI.Services.Implementations
             _locationRepo = locationRepo;
             _tripRepo = tripRepo;
             _notificationRepo = notificationRepo;
+            _recurringSchedule = recurringSchedule;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
         }
@@ -56,7 +59,23 @@ namespace BusTrackingAPI.Services.Implementations
 
         public async Task<ReservationDTO> CreateAsync(CreateReservationDTO dto)
         {
-            var trip = await _tripRepo.GetByIdAsync(dto.TripId);
+            Trip? trip;
+            if (dto.TripId.HasValue)
+            {
+                trip = await _tripRepo.GetByIdAsync(dto.TripId.Value);
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(dto.ScheduleId) ||
+                    !dto.TravelDate.HasValue)
+                    throw new InvalidOperationException(
+                        "Select a timetable departure and travel date.");
+
+                trip = await _recurringSchedule.GetOrCreateTripAsync(
+                    dto.ScheduleId,
+                    dto.TravelDate.Value);
+            }
+
             if (trip == null)
                 throw new InvalidOperationException("Selected trip does not exist.");
 
@@ -97,6 +116,11 @@ namespace BusTrackingAPI.Services.Implementations
             {
                 throw new InvalidOperationException("This seat is already taken.");
             }
+        }
+
+        public Task<IReadOnlyList<TimetableOptionDTO>> GetTimetableAsync()
+        {
+            return Task.FromResult(_recurringSchedule.GetTimetable());
         }
 
         public async Task<IEnumerable<ReservationDTO>> GetMyReservationsAsync()

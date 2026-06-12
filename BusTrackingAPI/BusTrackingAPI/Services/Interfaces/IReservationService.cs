@@ -10,6 +10,7 @@ namespace BusTrackingAPI.Services.Interfaces
         Task<ReservationDTO?> GetByIdAsync(int id);
 
         Task<ReservationDTO> CreateAsync(CreateReservationDTO dto);
+        Task<IReadOnlyList<TimetableOptionDTO>> GetTimetableAsync();
 
         Task<bool> DeleteAsync(int id);
 

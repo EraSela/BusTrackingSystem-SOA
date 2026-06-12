@@ -154,7 +154,6 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IRouteService, RouteService>();
 builder.Services.AddScoped<IRecurringTripScheduleService, RecurringTripScheduleService>();
-builder.Services.AddHostedService<RecurringTripScheduleWorker>();
 #endregion
 
 builder.Services.AddHttpContextAccessor();
@@ -189,7 +188,7 @@ using (var scope = app.Services.CreateScope())
     await db.Database.MigrateAsync();
     var recurringSchedule = scope.ServiceProvider
         .GetRequiredService<IRecurringTripScheduleService>();
-    await recurringSchedule.EnsureUpcomingTripsAsync();
+    await recurringSchedule.RemoveUnusedGeneratedTripsAsync();
 }
 
 app.Run();

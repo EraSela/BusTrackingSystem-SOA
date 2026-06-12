@@ -15,7 +15,6 @@ namespace BusTrackingAPI.Services.Implementations
         private readonly IBusRepository _busRepo;
         private readonly IUserRepository _userRepo;
         private readonly IRouteRepository _routeRepo;
-        private readonly IRecurringTripScheduleService _recurringSchedule;
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
@@ -26,7 +25,6 @@ namespace BusTrackingAPI.Services.Implementations
             IBusRepository busRepo,
             IUserRepository userRepo,
             IRouteRepository routeRepo,
-            IRecurringTripScheduleService recurringSchedule,
             IMapper mapper,
             IHttpContextAccessor httpContextAccessor)
         {
@@ -36,14 +34,12 @@ namespace BusTrackingAPI.Services.Implementations
             _busRepo = busRepo;
             _userRepo = userRepo;
             _routeRepo = routeRepo;
-            _recurringSchedule = recurringSchedule;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<IEnumerable<TripDTO>> GetAllAsync()
         {
-            await _recurringSchedule.EnsureUpcomingTripsAsync();
             var data = await _repo.GetAllAsync();
 
             var user = _httpContextAccessor.HttpContext?.User;

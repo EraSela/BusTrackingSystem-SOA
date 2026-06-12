@@ -1,9 +1,18 @@
+using BusTrackingAPI.DTOs;
+using BusTrackingAPI.Models;
+
 namespace BusTrackingAPI.Services.Interfaces
 {
     public interface IRecurringTripScheduleService
     {
-        Task<int> EnsureUpcomingTripsAsync(
-            DateTime? utcNow = null,
-            int daysAhead = 30);
+        IReadOnlyList<TimetableOptionDTO> GetTimetable();
+
+        Task<Trip> GetOrCreateTripAsync(
+            string scheduleId,
+            DateOnly travelDate,
+            DateTime? utcNow = null);
+
+        Task<int> RemoveUnusedGeneratedTripsAsync(
+            DateTime? utcNow = null);
     }
 }

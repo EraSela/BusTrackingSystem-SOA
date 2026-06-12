@@ -1,4 +1,5 @@
 using BusTrackingAPI.Data;
+using BusTrackingAPI.DTOs;
 using BusTrackingAPI.Models;
 using BusTrackingAPI.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +8,7 @@ namespace BusTrackingAPI.Services.Implementations
 {
     public class RecurringTripScheduleService : IRecurringTripScheduleService
     {
-        private static readonly SemaphoreSlim GenerationLock = new(1, 1);
+        private static readonly SemaphoreSlim CreationLock = new(1, 1);
         private static readonly DayOfWeek[] LimitedServiceDays =
         {
             DayOfWeek.Monday,
@@ -17,19 +18,19 @@ namespace BusTrackingAPI.Services.Implementations
 
         private static readonly ScheduleDefinition[] Schedule =
         {
-            new("Struga", "Skopje", new TimeSpan(5, 0, 0), "BUS-0500", "Bus 1", "SIM808_01", false),
-            new("Struga", "Skopje", new TimeSpan(8, 0, 0), "BUS-0800", "Bus 2", "SIM808_02", false),
-            new("Struga", "Skopje", new TimeSpan(12, 0, 0), "BUS-1200", "Bus 3", "SIM808_03", false),
-            new("Struga", "Skopje", new TimeSpan(17, 0, 0), "BUS-1700", "Bus 10", "SIM808_10", true),
+            new("struga-skopje-0500", "Struga", "Skopje", "Struga - Tetovo - Skopje", new TimeSpan(5, 0, 0), 180, "BUS-0500", "Bus 1", "SIM808_01", false),
+            new("struga-skopje-0800", "Struga", "Skopje", "Struga - Tetovo - Skopje", new TimeSpan(8, 0, 0), 180, "BUS-0800", "Bus 2", "SIM808_02", false),
+            new("struga-skopje-1200", "Struga", "Skopje", "Struga - Tetovo - Skopje", new TimeSpan(12, 0, 0), 180, "BUS-1200", "Bus 3", "SIM808_03", false),
+            new("struga-skopje-1700", "Struga", "Skopje", "Struga - Tetovo - Skopje", new TimeSpan(17, 0, 0), 180, "BUS-1700", "Bus 10", "SIM808_10", true),
 
-            new("Skopje", "Struga", new TimeSpan(11, 0, 0), "BUS-1100", "Bus 4", "SIM808_04", false),
-            new("Skopje", "Struga", new TimeSpan(13, 15, 0), "BUS-1315", "Bus 5", "SIM808_05", false),
-            new("Skopje", "Struga", new TimeSpan(16, 20, 0), "BUS-1620", "Bus 6", "SIM808_06", false),
-            new("Skopje", "Struga", new TimeSpan(21, 0, 0), "BUS-2100", "Bus 11", "SIM808_11", true),
+            new("skopje-struga-1100", "Skopje", "Struga", "Skopje - Tetovo - Struga", new TimeSpan(11, 0, 0), 180, "BUS-1100", "Bus 4", "SIM808_04", false),
+            new("skopje-struga-1315", "Skopje", "Struga", "Skopje - Tetovo - Struga", new TimeSpan(13, 15, 0), 180, "BUS-1315", "Bus 5", "SIM808_05", false),
+            new("skopje-struga-1620", "Skopje", "Struga", "Skopje - Tetovo - Struga", new TimeSpan(16, 20, 0), 180, "BUS-1620", "Bus 6", "SIM808_06", false),
+            new("skopje-struga-2100", "Skopje", "Struga", "Skopje - Tetovo - Struga", new TimeSpan(21, 0, 0), 180, "BUS-2100", "Bus 11", "SIM808_11", true),
 
-            new("Tetovo", "Struga", new TimeSpan(12, 0, 0), "BUS-T1200", "Bus 7", "SIM808_07", false),
-            new("Tetovo", "Struga", new TimeSpan(14, 15, 0), "BUS-T1415", "Bus 8", "SIM808_08", false),
-            new("Tetovo", "Struga", new TimeSpan(17, 20, 0), "BUS-T1720", "Bus 9", "SIM808_09", false)
+            new("tetovo-struga-1200", "Tetovo", "Struga", "Tetovo - Struga", new TimeSpan(12, 0, 0), 120, "BUS-T1200", "Bus 7", "SIM808_07", false),
+            new("tetovo-struga-1415", "Tetovo", "Struga", "Tetovo - Struga", new TimeSpan(14, 15, 0), 120, "BUS-T1415", "Bus 8", "SIM808_08", false),
+            new("tetovo-struga-1720", "Tetovo", "Struga", "Tetovo - Struga", new TimeSpan(17, 20, 0), 120, "BUS-T1720", "Bus 9", "SIM808_09", false)
         };
 
         private readonly AppDbContext _context;
@@ -39,196 +40,152 @@ namespace BusTrackingAPI.Services.Implementations
             _context = context;
         }
 
-        public async Task<int> EnsureUpcomingTripsAsync(
-            DateTime? utcNow = null,
-            int daysAhead = 30)
+        public IReadOnlyList<TimetableOptionDTO> GetTimetable()
         {
-            if (daysAhead < 0)
-                throw new ArgumentOutOfRangeException(
-                    nameof(daysAhead),
-                    "Days ahead cannot be negative.");
+            return Schedule.Select(definition => new TimetableOptionDTO
+            {
+                Id = definition.Id,
+                RouteName = definition.RouteName,
+                Origin = definition.Origin,
+                Destination = definition.Destination,
+                DepartureTime = definition.DepartureTime.ToString(@"hh\:mm"),
+                ExpectedDurationMinutes = definition.DurationMinutes,
+                TotalSeats = 40,
+                AvailableDays = definition.LimitedDaysOnly
+                    ? LimitedServiceDays.Select(day => (int)day).ToArray()
+                    : Enum.GetValues<DayOfWeek>().Select(day => (int)day).ToArray()
+            }).ToArray();
+        }
 
-            await GenerationLock.WaitAsync();
+        public async Task<Trip> GetOrCreateTripAsync(
+            string scheduleId,
+            DateOnly travelDate,
+            DateTime? utcNow = null)
+        {
+            var definition = Schedule.FirstOrDefault(item =>
+                string.Equals(item.Id, scheduleId, StringComparison.OrdinalIgnoreCase));
+            if (definition == null)
+                throw new InvalidOperationException("Selected timetable departure does not exist.");
+
+            var localDate = travelDate.ToDateTime(TimeOnly.MinValue);
+            if (definition.LimitedDaysOnly &&
+                !LimitedServiceDays.Contains(localDate.DayOfWeek))
+                throw new InvalidOperationException(
+                    "This departure is available only on Monday, Friday, and Sunday.");
+
+            var timeZone = GetSkopjeTimeZone();
+            var localDeparture = DateTime.SpecifyKind(
+                localDate.Add(definition.DepartureTime),
+                DateTimeKind.Unspecified);
+            var departureUtc = TimeZoneInfo.ConvertTimeToUtc(localDeparture, timeZone);
+            var now = (utcNow ?? DateTime.UtcNow).ToUniversalTime();
+
+            if (departureUtc <= now)
+                throw new InvalidOperationException(
+                    "Please select a future departure date and time.");
+
+            await CreationLock.WaitAsync();
             try
             {
-                var now = (utcNow ?? DateTime.UtcNow).ToUniversalTime();
-                var timeZone = GetSkopjeTimeZone();
-                var localStartDate = TimeZoneInfo.ConvertTimeFromUtc(now, timeZone).Date;
-                var localEndDate = localStartDate.AddDays(daysAhead);
+                var bus = await EnsureBusAsync(definition);
+                var route = await EnsureRouteAsync(definition);
 
-                var buses = await EnsureBusesAsync();
-                var routes = await EnsureRoutesAsync();
+                var existing = await _context.Trips
+                    .Include(trip => trip.Bus)
+                    .Include(trip => trip.Route)
+                    .FirstOrDefaultAsync(trip =>
+                        trip.RouteId == route.Id &&
+                        trip.ScheduledDeparture == departureUtc &&
+                        trip.Status != TripStatus.Cancelled);
+                if (existing != null)
+                    return existing;
 
-                var rangeStartUtc = TimeZoneInfo.ConvertTimeToUtc(
-                    DateTime.SpecifyKind(localStartDate, DateTimeKind.Unspecified),
-                    timeZone);
-                var rangeEndUtc = TimeZoneInfo.ConvertTimeToUtc(
-                    DateTime.SpecifyKind(localEndDate.AddDays(1), DateTimeKind.Unspecified),
-                    timeZone);
-
-                var existingKeys = (await _context.Trips
-                        .Where(trip =>
-                            trip.RouteId != null &&
-                            trip.ScheduledDeparture >= rangeStartUtc &&
-                            trip.ScheduledDeparture < rangeEndUtc)
-                        .Select(trip => new
-                        {
-                            RouteId = trip.RouteId!.Value,
-                            trip.ScheduledDeparture
-                        })
-                        .ToListAsync())
-                    .Select(item => CreateTripKey(
-                        item.RouteId,
-                        item.ScheduledDeparture))
-                    .ToHashSet();
-
-                var created = 0;
-
-                for (var date = localStartDate; date <= localEndDate; date = date.AddDays(1))
+                var trip = new Trip
                 {
-                    foreach (var definition in Schedule)
-                    {
-                        if (definition.LimitedDaysOnly &&
-                            !LimitedServiceDays.Contains(date.DayOfWeek))
-                            continue;
+                    BusId = bus.Id,
+                    Bus = bus,
+                    RouteId = route.Id,
+                    Route = route,
+                    DeviceId = definition.DeviceId,
+                    ScheduledDeparture = departureUtc,
+                    ScheduledArrival = departureUtc.AddMinutes(
+                        definition.DurationMinutes),
+                    Status = TripStatus.Scheduled,
+                    CreatedAt = now
+                };
 
-                        var localDeparture = DateTime.SpecifyKind(
-                            date.Add(definition.DepartureTime),
-                            DateTimeKind.Unspecified);
-                        var departureUtc = TimeZoneInfo.ConvertTimeToUtc(
-                            localDeparture,
-                            timeZone);
-
-                        if (departureUtc <= now)
-                            continue;
-
-                        var route = routes[(definition.Origin, definition.Destination)];
-                        var key = CreateTripKey(route.Id, departureUtc);
-
-                        if (!existingKeys.Add(key))
-                            continue;
-
-                        var bus = buses[definition.PlateNumber];
-                        _context.Trips.Add(new Trip
-                        {
-                            BusId = bus.Id,
-                            RouteId = route.Id,
-                            DeviceId = definition.DeviceId,
-                            ScheduledDeparture = departureUtc,
-                            ScheduledArrival = departureUtc.AddMinutes(
-                                route.ExpectedDurationMinutes),
-                            Status = TripStatus.Scheduled,
-                            CreatedAt = now
-                        });
-                        created++;
-                    }
-                }
-
-                if (created > 0)
-                    await _context.SaveChangesAsync();
-
-                return created;
+                _context.Trips.Add(trip);
+                await _context.SaveChangesAsync();
+                return trip;
             }
             finally
             {
-                GenerationLock.Release();
+                CreationLock.Release();
             }
         }
 
-        private async Task<Dictionary<string, Bus>> EnsureBusesAsync()
+        public async Task<int> RemoveUnusedGeneratedTripsAsync(
+            DateTime? utcNow = null)
         {
-            var requiredPlates = Schedule
-                .Select(item => item.PlateNumber)
-                .Distinct()
-                .ToArray();
-            var buses = await _context.Buses
-                .Where(bus => requiredPlates.Contains(bus.PlateNumber))
-                .ToDictionaryAsync(bus => bus.PlateNumber);
-
-            foreach (var definition in Schedule.DistinctBy(item => item.PlateNumber))
-            {
-                if (buses.ContainsKey(definition.PlateNumber))
-                    continue;
-
-                var bus = new Bus
-                {
-                    Name = definition.BusName,
-                    PlateNumber = definition.PlateNumber,
-                    TotalSeats = 40,
-                    IsActive = true
-                };
-                _context.Buses.Add(bus);
-                buses[definition.PlateNumber] = bus;
-            }
-
-            if (_context.ChangeTracker.HasChanges())
-                await _context.SaveChangesAsync();
-
-            return buses;
-        }
-
-        private async Task<Dictionary<(string Origin, string Destination), BusRoute>>
-            EnsureRoutesAsync()
-        {
-            var routes = await _context.Routes
-                .Where(route => route.IsActive)
+            var now = (utcNow ?? DateTime.UtcNow).ToUniversalTime();
+            var deviceIds = Schedule.Select(item => item.DeviceId).ToArray();
+            var unusedTrips = await _context.Trips
+                .Where(trip =>
+                    trip.DriverId == null &&
+                    trip.Status == TripStatus.Scheduled &&
+                    trip.ScheduledDeparture > now &&
+                    trip.DeviceId != null &&
+                    deviceIds.Contains(trip.DeviceId) &&
+                    !trip.Reservations.Any())
                 .ToListAsync();
-            var result = routes.ToDictionary(
-                route => (route.Origin, route.Destination));
 
-            AddRouteIfMissing(
-                result,
-                "Struga",
-                "Skopje",
-                "Struga - Tetovo - Skopje",
-                180);
-            AddRouteIfMissing(
-                result,
-                "Skopje",
-                "Struga",
-                "Skopje - Tetovo - Struga",
-                180);
-            AddRouteIfMissing(
-                result,
-                "Tetovo",
-                "Struga",
-                "Tetovo - Struga",
-                120);
+            if (unusedTrips.Count == 0)
+                return 0;
 
-            if (_context.ChangeTracker.HasChanges())
-                await _context.SaveChangesAsync();
-
-            return result;
+            _context.Trips.RemoveRange(unusedTrips);
+            await _context.SaveChangesAsync();
+            return unusedTrips.Count;
         }
 
-        private void AddRouteIfMissing(
-            IDictionary<(string Origin, string Destination), BusRoute> routes,
-            string origin,
-            string destination,
-            string name,
-            int durationMinutes)
+        private async Task<Bus> EnsureBusAsync(ScheduleDefinition definition)
         {
-            var key = (origin, destination);
-            if (routes.ContainsKey(key))
-                return;
+            var bus = await _context.Buses.FirstOrDefaultAsync(item =>
+                item.PlateNumber == definition.PlateNumber);
+            if (bus != null)
+                return bus;
 
-            var route = new BusRoute
+            bus = new Bus
             {
-                Name = name,
-                Origin = origin,
-                Destination = destination,
-                ExpectedDurationMinutes = durationMinutes,
+                Name = definition.BusName,
+                PlateNumber = definition.PlateNumber,
+                TotalSeats = 40,
+                IsActive = true
+            };
+            _context.Buses.Add(bus);
+            await _context.SaveChangesAsync();
+            return bus;
+        }
+
+        private async Task<BusRoute> EnsureRouteAsync(
+            ScheduleDefinition definition)
+        {
+            var route = await _context.Routes.FirstOrDefaultAsync(item =>
+                item.Origin == definition.Origin &&
+                item.Destination == definition.Destination);
+            if (route != null)
+                return route;
+
+            route = new BusRoute
+            {
+                Name = definition.RouteName,
+                Origin = definition.Origin,
+                Destination = definition.Destination,
+                ExpectedDurationMinutes = definition.DurationMinutes,
                 IsActive = true
             };
             _context.Routes.Add(route);
-            routes[key] = route;
-        }
-
-        private static string CreateTripKey(
-            int routeId,
-            DateTime departureUtc)
-        {
-            return $"{routeId}:{departureUtc.ToUniversalTime().Ticks}";
+            await _context.SaveChangesAsync();
+            return route;
         }
 
         private static TimeZoneInfo GetSkopjeTimeZone()
@@ -245,9 +202,12 @@ namespace BusTrackingAPI.Services.Implementations
         }
 
         private sealed record ScheduleDefinition(
+            string Id,
             string Origin,
             string Destination,
+            string RouteName,
             TimeSpan DepartureTime,
+            int DurationMinutes,
             string PlateNumber,
             string BusName,
             string DeviceId,

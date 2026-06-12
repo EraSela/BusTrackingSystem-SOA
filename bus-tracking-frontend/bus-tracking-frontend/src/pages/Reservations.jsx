@@ -14,16 +14,23 @@ const pickupPlaces = [
 ]
 
 const emptyForm = {
-  tripId: '',
+  scheduleId: '',
+  travelDate: '',
   seatNumber: '',
   pickupPlaceName: '',
   pickupLatitude: '',
   pickupLongitude: ''
 }
 
+const todayValue = () => {
+  const now = new Date()
+  const offset = now.getTimezoneOffset() * 60000
+  return new Date(now.getTime() - offset).toISOString().slice(0, 10)
+}
+
 export default function Reservations() {
   const isPassenger = getCurrentUser().role === 'Passenger'
-  const [trips, setTrips] = useState([])
+  const [timetable, setTimetable] = useState([])
   const [reservations, setReservations] = useState([])
   const [form, setForm] = useState(emptyForm)
   const [etas, setEtas] = useState({})
@@ -34,16 +41,10 @@ export default function Reservations() {
   const loadData = useCallback(async () => {
     try {
       const [tripResponse, reservationResponse] = await Promise.all([
-        API.get('/trips'),
+        API.get('/reservations/timetable'),
         API.get(isPassenger ? '/reservations/my' : '/reservations')
       ])
-      setTrips(tripResponse.data
-        .filter(trip =>
-          trip.status === 0 && new Date(trip.scheduledDeparture) > new Date()
-        )
-        .sort((left, right) =>
-          new Date(left.scheduledDeparture) - new Date(right.scheduledDeparture)
-        ))
+      setTimetable(tripResponse.data)
       setReservations(reservationResponse.data)
     } catch (err) {
       setMessage({ error: err.response?.data?.message || 'Failed to load reservations', success: '' })
@@ -55,7 +56,22 @@ export default function Reservations() {
     return () => clearTimeout(timer)
   }, [loadData])
 
-  const selectedTrip = trips.find(trip => trip.id === Number(form.tripId))
+  const selectedSchedule = timetable.find(item => item.id === form.scheduleId)
+  const selectedDay = form.travelDate
+    ? new Date(`${form.travelDate}T12:00:00`).getDay()
+    : null
+  const availableSchedules = selectedDay === null
+    ? timetable
+    : timetable.filter(item =>
+        item.availableDays.includes(selectedDay) &&
+        new Date(`${form.travelDate}T${item.departureTime}:00`) > new Date()
+      )
+  const expectedArrival = selectedSchedule && form.travelDate
+    ? new Date(
+        new Date(`${form.travelDate}T${selectedSchedule.departureTime}:00`).getTime() +
+        selectedSchedule.expectedDurationMinutes * 60000
+      )
+    : null
 
   const selectPickup = (event) => {
     const pickup = pickupPlaces.find(item => item.name === event.target.value)
@@ -73,7 +89,8 @@ export default function Reservations() {
     setMessage({ error: '', success: '' })
     try {
       const response = await API.post('/reservations', {
-        tripId: Number(form.tripId),
+        scheduleId: form.scheduleId,
+        travelDate: form.travelDate,
         seatNumber: Number(form.seatNumber),
         pickupPlaceName: form.pickupPlaceName,
         pickupLatitude: Number(form.pickupLatitude),
@@ -126,12 +143,29 @@ export default function Reservations() {
           <h2 className="text-2xl font-bold">Book a scheduled trip</h2>
           <form onSubmit={submit} className="mt-6 grid gap-5 md:grid-cols-2">
             <label className="text-sm font-medium">
-              Scheduled departure
-              <select required value={form.tripId} onChange={event => setForm({ ...form, tripId: event.target.value, seatNumber: '' })} className="mt-2 w-full rounded-xl border px-4 py-3">
-                <option value="">Select a trip</option>
-                {trips.map(trip => (
-                  <option key={trip.id} value={trip.id}>
-                    {trip.routeName} - {new Date(trip.scheduledDeparture).toLocaleString()}
+              Travel date
+              <input
+                required
+                type="date"
+                min={todayValue()}
+                value={form.travelDate}
+                onChange={event => setForm({
+                  ...form,
+                  travelDate: event.target.value,
+                  scheduleId: '',
+                  seatNumber: ''
+                })}
+                className="mt-2 w-full rounded-xl border px-4 py-3"
+              />
+            </label>
+
+            <label className="text-sm font-medium">
+              Timetable departure
+              <select required disabled={!form.travelDate} value={form.scheduleId} onChange={event => setForm({ ...form, scheduleId: event.target.value, seatNumber: '' })} className="mt-2 w-full rounded-xl border px-4 py-3">
+                <option value="">Select a departure</option>
+                {availableSchedules.map(item => (
+                  <option key={item.id} value={item.id}>
+                    {item.routeName} - {item.departureTime}
                   </option>
                 ))}
               </select>
@@ -139,7 +173,7 @@ export default function Reservations() {
 
             <label className="text-sm font-medium">
               Seat number
-              <input required type="number" min="1" max={selectedTrip?.totalSeats || 100} disabled={!selectedTrip} value={form.seatNumber} onChange={event => setForm({ ...form, seatNumber: event.target.value })} className="mt-2 w-full rounded-xl border px-4 py-3" />
+              <input required type="number" min="1" max={selectedSchedule?.totalSeats || 100} disabled={!selectedSchedule} value={form.seatNumber} onChange={event => setForm({ ...form, seatNumber: event.target.value })} className="mt-2 w-full rounded-xl border px-4 py-3" />
             </label>
 
             <label className="text-sm font-medium">
@@ -151,12 +185,14 @@ export default function Reservations() {
             </label>
 
             <div className="rounded-xl bg-zinc-50 px-4 py-3 text-sm">
-              {selectedTrip ? (
+              {selectedSchedule ? (
                 <>
-                  <p className="font-semibold">{selectedTrip.busName}</p>
-                  <p className="text-zinc-600">Expected arrival: {new Date(selectedTrip.scheduledArrival).toLocaleString()}</p>
+                  <p className="font-semibold">{selectedSchedule.routeName}</p>
+                  <p className="text-zinc-600">
+                    Expected arrival: {expectedArrival?.toLocaleString()}
+                  </p>
                 </>
-              ) : 'Select a departure to see trip details.'}
+              ) : 'Select a date and departure to see trip details.'}
             </div>
 
             <button disabled={loading} className="rounded-xl bg-black px-5 py-3 font-semibold text-white md:col-span-2">

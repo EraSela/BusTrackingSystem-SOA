@@ -31,6 +31,13 @@ namespace BusTrackingAPI.Controllers
             return Ok(await _service.GetMyReservationsAsync());
         }
 
+        [HttpGet("timetable")]
+        [Authorize(Roles = "Passenger,Admin")]
+        public async Task<IActionResult> GetTimetable()
+        {
+            return Ok(await _service.GetTimetableAsync());
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
