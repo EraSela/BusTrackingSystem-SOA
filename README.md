@@ -126,6 +126,19 @@ dotnet test
 
 ```
 
+\## Simulating GPS Data
+
+Start a trip with device ID `SIM808_01`, then run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\simulate-gps.ps1 `
+  -GpxPath "C:\Users\User\Desktop\cap\Monday Morning Track.gpx"
+```
+
+The script samples the recorded GPX track and sends its coordinates to the deployed API.
+By default, it sends 60 points at two-second intervals. Use `-Count`,
+`-IntervalSeconds`, and `-DeviceId` to customize the simulation.
+
 
 
 \## GitHub Repository

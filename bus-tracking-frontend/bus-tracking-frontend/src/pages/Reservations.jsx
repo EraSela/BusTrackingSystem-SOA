@@ -37,9 +37,13 @@ export default function Reservations() {
         API.get('/trips'),
         API.get(isPassenger ? '/reservations/my' : '/reservations')
       ])
-      setTrips(tripResponse.data.filter(trip =>
-        trip.status === 0 && new Date(trip.scheduledDeparture) > new Date()
-      ))
+      setTrips(tripResponse.data
+        .filter(trip =>
+          trip.status === 0 && new Date(trip.scheduledDeparture) > new Date()
+        )
+        .sort((left, right) =>
+          new Date(left.scheduledDeparture) - new Date(right.scheduledDeparture)
+        ))
       setReservations(reservationResponse.data)
     } catch (err) {
       setMessage({ error: err.response?.data?.message || 'Failed to load reservations', success: '' })
