@@ -170,16 +170,16 @@ export default function Trips() {
                       <p><strong>Expected arrival:</strong> {new Date(trip.scheduledArrival).toLocaleString()}</p>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap items-center gap-3 self-start">
                     {isAdmin && trip.status === 0 && !trip.driverId && (
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap items-center gap-2">
                         <select
                           value={driverAssignments[trip.id] || ''}
                           onChange={event => setDriverAssignments(current => ({
                             ...current,
                             [trip.id]: event.target.value
                           }))}
-                          className="rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm"
+                          className="h-11 min-w-44 rounded-xl border border-zinc-300 bg-white px-4 text-sm font-medium text-zinc-800 outline-none transition focus:border-black focus:ring-2 focus:ring-zinc-200"
                         >
                           <option value="">Select driver</option>
                           {drivers.map(driver => (
@@ -188,14 +188,14 @@ export default function Trips() {
                             </option>
                           ))}
                         </select>
-                        <button onClick={() => assignDriver(trip)} className="rounded-full bg-zinc-700 px-4 py-2 text-sm font-semibold text-white">
+                        <button onClick={() => assignDriver(trip)} className="h-11 rounded-xl bg-black px-5 text-sm font-semibold text-white transition hover:bg-zinc-800">
                           Assign
                         </button>
                       </div>
                     )}
-                    {trip.status === 0 && trip.driverId && <button onClick={() => updateStatus(trip, 2)} className="rounded-full bg-black px-4 py-2 text-sm font-semibold text-white">Start</button>}
-                    {(trip.status === 1 || trip.status === 2) && <button onClick={() => updateStatus(trip, 3)} className="rounded-full bg-black px-4 py-2 text-sm font-semibold text-white">Complete</button>}
-                    {(trip.status === 0 || trip.status === 1 || trip.status === 2) && <button onClick={() => updateStatus(trip, 4)} className="rounded-full bg-red-600 px-4 py-2 text-sm font-semibold text-white">Cancel</button>}
+                    {trip.status === 0 && trip.driverId && <button onClick={() => updateStatus(trip, 2)} className="h-11 rounded-xl bg-black px-5 text-sm font-semibold text-white transition hover:bg-zinc-800">Start</button>}
+                    {(trip.status === 1 || trip.status === 2) && <button onClick={() => updateStatus(trip, 3)} className="h-11 rounded-xl bg-black px-5 text-sm font-semibold text-white transition hover:bg-zinc-800">Complete</button>}
+                    {(trip.status === 0 || trip.status === 1 || trip.status === 2) && <button onClick={() => updateStatus(trip, 4)} className="h-11 rounded-xl border border-red-200 bg-red-50 px-5 text-sm font-semibold text-red-700 transition hover:bg-red-100">Cancel</button>}
                   </div>
                 </div>
               </article>
