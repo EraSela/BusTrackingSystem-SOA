@@ -124,6 +124,79 @@ public class TripServiceTests
         Assert.Equal(TripStatus.InProgress, result.Status);
     }
 
+    [Fact]
+    public async Task AssignDriverAsync_ShouldAssignActiveDriver()
+    {
+        var tripRepo = new Mock<ITripRepository>();
+        var userRepo = new Mock<IUserRepository>();
+        var trip = CreateTrip(12, CreateBus(1, "Test Bus"), 0);
+        trip.DriverId = null;
+        var driver = new User
+        {
+            Id = 7,
+            FullName = "Assigned Driver",
+            Email = "driver@test.local",
+            PasswordHash = "hash",
+            Role = UserRole.Driver,
+            IsActive = true
+        };
+        tripRepo.Setup(repo => repo.GetByIdAsync(trip.Id)).ReturnsAsync(trip);
+        tripRepo.Setup(repo => repo.HasOverlappingDriverTripAsync(
+                driver.Id,
+                trip.ScheduledDeparture,
+                trip.ScheduledArrival))
+            .ReturnsAsync(false);
+        tripRepo.Setup(repo => repo.UpdateAsync(trip))
+            .ReturnsAsync(trip);
+        userRepo.Setup(repo => repo.GetByIdAsync(driver.Id))
+            .ReturnsAsync(driver);
+
+        var result = await CreateService(
+            tripRepo.Object,
+            Mock.Of<IBusRepository>(),
+            userRepo.Object,
+            Mock.Of<IRouteRepository>(),
+            UserRole.Admin,
+            1).AssignDriverAsync(trip.Id, new AssignTripDriverDTO
+            {
+                DriverId = driver.Id
+            });
+
+        Assert.NotNull(result);
+        Assert.Equal(driver.Id, result.DriverId);
+        Assert.Equal(driver.FullName, result.DriverName);
+    }
+
+    [Fact]
+    public async Task UpdateTripStatus_ShouldRejectStartWithoutDriver()
+    {
+        var tripRepo = new Mock<ITripRepository>();
+        var departure = DateTime.UtcNow;
+        var trip = CreateTrip(13, CreateBus(1, "Test Bus"), 0);
+        trip.DriverId = null;
+        trip.DeviceId = "SIM808_01";
+        trip.ScheduledDeparture = departure;
+        trip.ScheduledArrival = departure.AddHours(3);
+        tripRepo.Setup(repo => repo.GetByIdAsync(trip.Id)).ReturnsAsync(trip);
+
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(
+            () => CreateService(
+                tripRepo.Object,
+                Mock.Of<IBusRepository>(),
+                Mock.Of<IUserRepository>(),
+                Mock.Of<IRouteRepository>(),
+                UserRole.Admin,
+                1).UpdateStatusAsync(trip.Id, new UpdateTripStatusDTO
+                {
+                    Status = TripStatus.InProgress,
+                    ActualDeparture = departure
+                }));
+
+        Assert.Equal(
+            "Assign a driver before starting this trip.",
+            exception.Message);
+    }
+
     private static TripService CreateService(
         ITripRepository tripRepo,
         IBusRepository busRepo,

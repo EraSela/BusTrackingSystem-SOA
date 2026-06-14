@@ -58,4 +58,10 @@ namespace BusTrackingAPI.DTOs
         public DateTime? ActualDeparture { get; set; }
         public DateTime? ActualArrival { get; set; }
     }
+
+    public class AssignTripDriverDTO
+    {
+        [Range(1, int.MaxValue)]
+        public int DriverId { get; set; }
+    }
 }

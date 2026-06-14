@@ -22,6 +22,7 @@ export default function Trips() {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
   const [loading, setLoading] = useState(false)
+  const [driverAssignments, setDriverAssignments] = useState({})
 
   const loadTrips = async () => {
     const response = await API.get('/trips')
@@ -90,6 +91,25 @@ export default function Trips() {
     }
   }
 
+  const assignDriver = async (trip) => {
+    const driverId = Number(driverAssignments[trip.id])
+    if (!driverId) {
+      setError('Select a driver first.')
+      return
+    }
+
+    setError('')
+    setSuccess('')
+    try {
+      await API.put(`/trips/${trip.id}/driver`, { driverId })
+      setDriverAssignments(current => ({ ...current, [trip.id]: '' }))
+      setSuccess('Driver assigned successfully.')
+      await loadTrips()
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to assign driver')
+    }
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -143,7 +163,7 @@ export default function Trips() {
                   <div>
                     <span className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold">{statusLabels[trip.status] || 'Unknown'}</span>
                     <h3 className="mt-4 text-xl font-bold">{trip.routeName || 'Route not assigned'}</h3>
-                    <p className="mt-2 text-zinc-600">{trip.busName} · Driver: {trip.driverName}</p>
+                    <p className="mt-2 text-zinc-600">{trip.busName} · Driver: {trip.driverName || 'Not assigned'}</p>
                     <p className="mt-1 text-sm">Device: {trip.deviceId || 'Not assigned'}</p>
                     <div className="mt-4 grid gap-4 text-sm md:grid-cols-2">
                       <p><strong>Departure:</strong> {new Date(trip.scheduledDeparture).toLocaleString()}</p>
@@ -151,7 +171,29 @@ export default function Trips() {
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {trip.status === 0 && <button onClick={() => updateStatus(trip, 2)} className="rounded-full bg-black px-4 py-2 text-sm font-semibold text-white">Start</button>}
+                    {isAdmin && trip.status === 0 && !trip.driverId && (
+                      <div className="flex flex-wrap gap-2">
+                        <select
+                          value={driverAssignments[trip.id] || ''}
+                          onChange={event => setDriverAssignments(current => ({
+                            ...current,
+                            [trip.id]: event.target.value
+                          }))}
+                          className="rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm"
+                        >
+                          <option value="">Select driver</option>
+                          {drivers.map(driver => (
+                            <option key={driver.id} value={driver.id}>
+                              {driver.fullName}
+                            </option>
+                          ))}
+                        </select>
+                        <button onClick={() => assignDriver(trip)} className="rounded-full bg-zinc-700 px-4 py-2 text-sm font-semibold text-white">
+                          Assign
+                        </button>
+                      </div>
+                    )}
+                    {trip.status === 0 && trip.driverId && <button onClick={() => updateStatus(trip, 2)} className="rounded-full bg-black px-4 py-2 text-sm font-semibold text-white">Start</button>}
                     {(trip.status === 1 || trip.status === 2) && <button onClick={() => updateStatus(trip, 3)} className="rounded-full bg-black px-4 py-2 text-sm font-semibold text-white">Complete</button>}
                     {(trip.status === 0 || trip.status === 1 || trip.status === 2) && <button onClick={() => updateStatus(trip, 4)} className="rounded-full bg-red-600 px-4 py-2 text-sm font-semibold text-white">Cancel</button>}
                   </div>

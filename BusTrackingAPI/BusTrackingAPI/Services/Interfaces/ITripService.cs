@@ -10,6 +10,7 @@ namespace BusTrackingAPI.Services.Interfaces
         Task<IEnumerable<TripDTO>> GetCompletedTripsAsync();
         Task<TripDTO?> GetActiveByBusIdAsync(int busId);
         Task<TripDTO> CreateAsync(CreateTripDTO dto);
+        Task<TripDTO?> AssignDriverAsync(int id, AssignTripDriverDTO dto);
         Task<TripDTO?> UpdateStatusAsync(int id, UpdateTripStatusDTO dto);
         Task<bool> DeleteAsync(int id);
     }

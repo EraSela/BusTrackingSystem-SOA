@@ -80,6 +80,25 @@ namespace BusTrackingAPI.Controllers
             return Ok(result);
         }
 
+        [HttpPut("{id}/driver")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AssignDriver(
+            int id,
+            AssignTripDriverDTO dto)
+        {
+            var result = await _service.AssignDriverAsync(id, dto);
+
+            if (result == null)
+                return NotFound(new
+                {
+                    status = 404,
+                    error = "Not Found",
+                    message = $"Trip with ID {id} was not found."
+                });
+
+            return Ok(result);
+        }
+
         [HttpPut("{id}/status")]
         [Authorize(Roles = "Driver,Admin")]
         public async Task<IActionResult> UpdateStatus(int id, UpdateTripStatusDTO dto)

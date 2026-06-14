@@ -147,6 +147,42 @@ namespace BusTrackingAPI.Services.Implementations
             return _mapper.Map<TripDTO>(created);
         }
 
+        public async Task<TripDTO?> AssignDriverAsync(
+            int id,
+            AssignTripDriverDTO dto)
+        {
+            var trip = await _repo.GetByIdAsync(id);
+            if (trip == null)
+                return null;
+
+            if (trip.Status != TripStatus.Scheduled)
+                throw new InvalidOperationException(
+                    "A driver can only be assigned to a scheduled trip.");
+
+            var driver = await _userRepo.GetByIdAsync(dto.DriverId);
+            if (driver == null ||
+                driver.Role != UserRole.Driver ||
+                !driver.IsActive)
+                throw new InvalidOperationException(
+                    "Assigned driver must be an active driver account.");
+
+            if (trip.DriverId == driver.Id)
+                return _mapper.Map<TripDTO>(trip);
+
+            if (await _repo.HasOverlappingDriverTripAsync(
+                    dto.DriverId,
+                    trip.ScheduledDeparture,
+                    trip.ScheduledArrival))
+                throw new InvalidOperationException(
+                    "This driver is already assigned to another trip during that time.");
+
+            trip.DriverId = driver.Id;
+            trip.Driver = driver;
+
+            var updated = await _repo.UpdateAsync(trip);
+            return _mapper.Map<TripDTO>(updated);
+        }
+
         public async Task<TripDTO?> UpdateStatusAsync(int id, UpdateTripStatusDTO dto)
         {
             if (!Enum.IsDefined(typeof(TripStatus), dto.Status))
@@ -222,6 +258,10 @@ namespace BusTrackingAPI.Services.Implementations
 
         private async Task StartTripAsync(Trip trip, DateTime actualDeparture)
         {
+            if (!trip.DriverId.HasValue)
+                throw new InvalidOperationException(
+                    "Assign a driver before starting this trip.");
+
             if (string.IsNullOrWhiteSpace(trip.DeviceId))
                 throw new InvalidOperationException("Trip must have a tracker device before it can start.");
 
