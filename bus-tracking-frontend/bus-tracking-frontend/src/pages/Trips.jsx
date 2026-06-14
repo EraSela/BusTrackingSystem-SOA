@@ -170,7 +170,7 @@ export default function Trips() {
                       <p><strong>Expected arrival:</strong> {new Date(trip.scheduledArrival).toLocaleString()}</p>
                     </div>
                   </div>
-                  <div className="flex flex-wrap items-center gap-3 self-start">
+                  <div className="flex flex-wrap items-center gap-3 self-start lg:self-center">
                     {isAdmin && trip.status === 0 && !trip.driverId && (
                       <div className="flex flex-wrap items-center gap-2">
                         <select
