@@ -17,6 +17,7 @@ namespace BusTrackingAPI.DTOs
         public string? DeviceId { get; set; }
         public string BusName { get; set; } = string.Empty;
         public int TotalSeats { get; set; }
+        public int ReservationCount { get; set; }
 
         public DateTime ScheduledDeparture { get; set; }
         public DateTime? ActualDeparture { get; set; }

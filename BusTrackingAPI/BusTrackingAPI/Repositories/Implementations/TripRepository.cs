@@ -20,6 +20,7 @@ namespace BusTrackingAPI.Repositories.Implementations
                 .Include(t => t.Bus)
                 .Include(t => t.Driver)
                 .Include(t => t.Route)
+                .Include(t => t.Reservations)
                 .OrderByDescending(t => t.ScheduledDeparture)
                 .AsNoTracking()
                 .ToListAsync();
@@ -31,6 +32,7 @@ namespace BusTrackingAPI.Repositories.Implementations
                 .Include(t => t.Bus)
                 .Include(t => t.Driver)
                 .Include(t => t.Route)
+                .Include(t => t.Reservations)
                 .FirstOrDefaultAsync(t => t.Id == id);
         }
 
@@ -40,6 +42,7 @@ namespace BusTrackingAPI.Repositories.Implementations
                 .Include(t => t.Bus)
                 .Include(t => t.Driver)
                 .Include(t => t.Route)
+                .Include(t => t.Reservations)
                 .Where(t => t.BusId == busId)
                 .OrderByDescending(t => t.ScheduledDeparture)
                 .AsNoTracking()
@@ -52,6 +55,7 @@ namespace BusTrackingAPI.Repositories.Implementations
                 .Include(t => t.Bus)
                 .Include(t => t.Driver)
                 .Include(t => t.Route)
+                .Include(t => t.Reservations)
                 .Where(t => t.Status == TripStatus.Completed)
                 .OrderByDescending(t => t.ScheduledDeparture)
                 .AsNoTracking()
@@ -64,6 +68,7 @@ namespace BusTrackingAPI.Repositories.Implementations
                 .Include(t => t.Bus)
                 .Include(t => t.Driver)
                 .Include(t => t.Route)
+                .Include(t => t.Reservations)
                 .Where(t =>
                     t.BusId == busId &&
                     (
@@ -80,6 +85,7 @@ namespace BusTrackingAPI.Repositories.Implementations
                 .Include(t => t.Bus)
                 .Include(t => t.Driver)
                 .Include(t => t.Route)
+                .Include(t => t.Reservations)
                 .Where(t =>
                     t.DeviceId == deviceId &&
                     (
@@ -135,6 +141,7 @@ namespace BusTrackingAPI.Repositories.Implementations
                 .Include(t => t.Bus)
                 .Include(t => t.Driver)
                 .Include(t => t.Route)
+                .Include(t => t.Reservations)
                 .FirstAsync(t => t.Id == trip.Id);
         }
 
@@ -147,6 +154,7 @@ namespace BusTrackingAPI.Repositories.Implementations
                 .Include(t => t.Bus)
                 .Include(t => t.Driver)
                 .Include(t => t.Route)
+                .Include(t => t.Reservations)
                 .FirstAsync(t => t.Id == trip.Id);
         }
 

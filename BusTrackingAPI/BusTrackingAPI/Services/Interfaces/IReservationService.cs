@@ -6,6 +6,7 @@ namespace BusTrackingAPI.Services.Interfaces
     {
         Task<IEnumerable<ReservationDTO>> GetAllAsync();
         Task<IEnumerable<ReservationDTO>> GetMyReservationsAsync();
+        Task<IEnumerable<ReservationDTO>> GetByTripIdAsync(int tripId);
 
         Task<ReservationDTO?> GetByIdAsync(int id);
 

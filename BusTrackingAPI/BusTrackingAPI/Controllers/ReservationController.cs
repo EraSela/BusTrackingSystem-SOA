@@ -31,6 +31,24 @@ namespace BusTrackingAPI.Controllers
             return Ok(await _service.GetMyReservationsAsync());
         }
 
+        [HttpGet("trip/{tripId}")]
+        [Authorize(Roles = "Driver,Admin")]
+        public async Task<IActionResult> GetByTrip(int tripId)
+        {
+            try
+            {
+                return Ok(await _service.GetByTripIdAsync(tripId));
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { status = 404, error = "Not Found", message = ex.Message });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Forbid(ex.Message);
+            }
+        }
+
         [HttpGet("timetable")]
         [Authorize(Roles = "Passenger,Admin")]
         public async Task<IActionResult> GetTimetable()

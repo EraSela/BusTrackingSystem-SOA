@@ -44,6 +44,18 @@ namespace BusTrackingAPI.Services.Implementations
             return _mapper.Map<IEnumerable<ReservationDTO>>(await _repo.GetAllAsync());
         }
 
+        public async Task<IEnumerable<ReservationDTO>> GetByTripIdAsync(int tripId)
+        {
+            var trip = await _tripRepo.GetByIdAsync(tripId);
+            if (trip == null)
+                throw new KeyNotFoundException("Trip was not found.");
+
+            EnsureDriverCanManage(trip);
+
+            return _mapper.Map<IEnumerable<ReservationDTO>>(
+                await _repo.GetByTripIdAsync(tripId));
+        }
+
         public async Task<ReservationDTO?> GetByIdAsync(int id)
         {
             var reservation = await _repo.GetByIdAsync(id);

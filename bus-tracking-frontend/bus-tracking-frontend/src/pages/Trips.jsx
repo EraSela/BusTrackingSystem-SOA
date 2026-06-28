@@ -23,6 +23,9 @@ export default function Trips() {
   const [success, setSuccess] = useState('')
   const [loading, setLoading] = useState(false)
   const [driverAssignments, setDriverAssignments] = useState({})
+  const [openTripId, setOpenTripId] = useState(null)
+  const [tripReservations, setTripReservations] = useState({})
+  const [loadingReservations, setLoadingReservations] = useState({})
 
   const loadTrips = async () => {
     const response = await API.get('/trips')
@@ -110,6 +113,28 @@ export default function Trips() {
     }
   }
 
+  const toggleReservations = async (trip) => {
+    if (openTripId === trip.id) {
+      setOpenTripId(null)
+      return
+    }
+
+    setOpenTripId(trip.id)
+
+    if (tripReservations[trip.id]) return
+
+    setLoadingReservations(current => ({ ...current, [trip.id]: true }))
+    setError('')
+    try {
+      const response = await API.get(`/reservations/trip/${trip.id}`)
+      setTripReservations(current => ({ ...current, [trip.id]: response.data }))
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to load trip reservations')
+    } finally {
+      setLoadingReservations(current => ({ ...current, [trip.id]: false }))
+    }
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -168,9 +193,13 @@ export default function Trips() {
                     <div className="mt-4 grid gap-4 text-sm md:grid-cols-2">
                       <p><strong>Departure:</strong> {new Date(trip.scheduledDeparture).toLocaleString()}</p>
                       <p><strong>Expected arrival:</strong> {new Date(trip.scheduledArrival).toLocaleString()}</p>
+                      <p><strong>Reservations:</strong> {trip.reservationCount ?? 0}</p>
                     </div>
                   </div>
                   <div className="flex flex-wrap items-center gap-3 self-start lg:self-center">
+                    <button onClick={() => toggleReservations(trip)} className="h-11 rounded-xl border border-zinc-300 px-5 text-sm font-semibold text-zinc-800 transition hover:bg-zinc-50">
+                      {openTripId === trip.id ? 'Hide reservations' : 'View reservations'}
+                    </button>
                     {isAdmin && trip.status === 0 && !trip.driverId && (
                       <div className="flex flex-wrap items-center gap-2">
                         <select
@@ -198,6 +227,40 @@ export default function Trips() {
                     {(trip.status === 0 || trip.status === 1 || trip.status === 2) && <button onClick={() => updateStatus(trip, 4)} className="h-11 rounded-xl border border-red-200 bg-red-50 px-5 text-sm font-semibold text-red-700 transition hover:bg-red-100">Cancel</button>}
                   </div>
                 </div>
+                {openTripId === trip.id && (
+                  <div className="mt-6 border-t border-zinc-200 pt-6">
+                    <div className="flex flex-col justify-between gap-2 md:flex-row md:items-center">
+                      <h4 className="text-lg font-bold">Reservations</h4>
+                      <span className="text-sm text-zinc-500">
+                        {trip.reservationCount ?? 0} {(trip.reservationCount ?? 0) === 1 ? 'seat booked' : 'seats booked'}
+                      </span>
+                    </div>
+
+                    {loadingReservations[trip.id] ? (
+                      <p className="mt-4 text-sm text-zinc-500">Loading reservations...</p>
+                    ) : (tripReservations[trip.id]?.length ?? 0) === 0 ? (
+                      <p className="mt-4 rounded-2xl bg-zinc-50 p-5 text-sm text-zinc-500">No reservations for this trip yet.</p>
+                    ) : (
+                      <div className="mt-4 overflow-hidden rounded-2xl border border-zinc-200">
+                        <div className="grid grid-cols-1 divide-y divide-zinc-200">
+                          {tripReservations[trip.id].map(reservation => (
+                            <div key={reservation.id} className="grid gap-3 p-4 text-sm md:grid-cols-[1.4fr_0.7fr_1.4fr_0.8fr] md:items-center">
+                              <div>
+                                <p className="font-semibold text-zinc-950">{reservation.userFullName}</p>
+                                <p className="text-zinc-500">Reserved {new Date(reservation.createdAt).toLocaleString()}</p>
+                              </div>
+                              <p><strong>Seat:</strong> {reservation.seatNumber}</p>
+                              <p><strong>Pickup:</strong> {reservation.pickupPlaceName}</p>
+                              <span className={`w-fit rounded-full px-3 py-1 text-xs font-semibold ${reservation.isVerified ? 'bg-green-100 text-green-700' : 'bg-zinc-100 text-zinc-700'}`}>
+                                {reservation.isVerified ? 'Checked in' : 'Not checked in'}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
               </article>
             ))}
             {trips.length === 0 && <p className="rounded-3xl border p-8 text-zinc-500">No trips found.</p>}

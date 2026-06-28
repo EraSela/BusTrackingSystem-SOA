@@ -50,6 +50,7 @@ namespace BusTrackingAPI.Repositories.Implementations
             return await _context.Reservations
                 .Include(r => r.User)
                 .Include(r => r.Trip)!.ThenInclude(t => t.Bus)
+                .Include(r => r.Trip)!.ThenInclude(t => t.Route)
                 .Where(r => r.TripId == tripId)
                 .OrderBy(r => r.SeatNumber)
                 .AsNoTracking()

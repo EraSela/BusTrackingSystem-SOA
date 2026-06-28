@@ -89,6 +89,8 @@ namespace BusTrackingAPI.Mappings
                     opt => opt.MapFrom(src => src.Bus.Name))
                 .ForMember(dest => dest.TotalSeats,
                     opt => opt.MapFrom(src => src.Bus.TotalSeats))
+                .ForMember(dest => dest.ReservationCount,
+                    opt => opt.MapFrom(src => src.Reservations.Count))
                 .ForMember(dest => dest.DriverName,
                     opt => opt.MapFrom(src => src.Driver != null ? src.Driver.FullName : string.Empty))
                 .ForMember(dest => dest.RouteName,
