@@ -30,6 +30,11 @@ const butterflyIcon = L.divIcon({
   iconAnchor: [27, 31],
 })
 
+const formatNumber = (value, decimals = 1) => {
+  if (value === null || value === undefined || Number.isNaN(Number(value))) return 'N/A'
+  return Number(value).toFixed(decimals)
+}
+
 export default function Map() {
   const [buses, setBuses] = useState([])
   const [lastUpdated, setLastUpdated] = useState(null)
@@ -135,7 +140,7 @@ export default function Map() {
                     <div>
                       <p className="text-gray-500">Speed</p>
                       <p className="font-semibold text-zinc-900">
-                        {bus.speed !== null && bus.speed !== undefined ? `${bus.speed} km/h` : 'N/A'}
+                        {bus.speed !== null && bus.speed !== undefined ? `${formatNumber(bus.speed)} km/h` : 'N/A'}
                       </p>
                     </div>
 
@@ -176,7 +181,7 @@ export default function Map() {
                     </p>
 
                     <p>
-                      Speed: {bus.speed !== null && bus.speed !== undefined ? `${bus.speed} km/h` : 'N/A'}
+                      Speed: {bus.speed !== null && bus.speed !== undefined ? `${formatNumber(bus.speed)} km/h` : 'N/A'}
                     </p>
 
                     <p>
