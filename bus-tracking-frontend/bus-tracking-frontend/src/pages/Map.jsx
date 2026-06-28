@@ -37,7 +37,6 @@ const formatNumber = (value, decimals = 1) => {
 
 export default function Map() {
   const [buses, setBuses] = useState([])
-  const [loading, setLoading] = useState(true)
 
   const fetchLive = async () => {
     try {
@@ -45,8 +44,6 @@ export default function Map() {
       setBuses(res.data)
     } catch (err) {
       console.error('Failed to fetch live locations', err)
-    } finally {
-      setLoading(false)
     }
   }
 
