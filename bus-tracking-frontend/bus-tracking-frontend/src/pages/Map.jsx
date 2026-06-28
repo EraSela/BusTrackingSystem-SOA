@@ -37,14 +37,12 @@ const formatNumber = (value, decimals = 1) => {
 
 export default function Map() {
   const [buses, setBuses] = useState([])
-  const [lastUpdated, setLastUpdated] = useState(null)
   const [loading, setLoading] = useState(true)
 
   const fetchLive = async () => {
     try {
       const res = await API.get('/locations/live')
       setBuses(res.data)
-      setLastUpdated(new Date().toLocaleTimeString())
     } catch (err) {
       console.error('Failed to fetch live locations', err)
     } finally {
@@ -65,7 +63,7 @@ export default function Map() {
       <Navbar />
 
       <main className="px-6 md:px-10 py-10 max-w-7xl mx-auto">
-        <div className="mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <div className="mb-10">
           <div>
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-zinc-950">
               Live Bus Map
@@ -76,14 +74,6 @@ export default function Map() {
             </p>
           </div>
 
-          <div className="bg-zinc-100 rounded-full px-5 py-3 text-sm text-zinc-700 flex items-center gap-3 w-fit">
-            <span className="inline-block w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse" />
-            {loading
-              ? 'Loading live data...'
-              : lastUpdated
-                ? `Updated ${lastUpdated}`
-                : 'Waiting for GPS data'}
-          </div>
         </div>
 
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
