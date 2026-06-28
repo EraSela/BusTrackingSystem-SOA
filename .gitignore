@@ -3,3 +3,7 @@
 work/
 **/~$*.docx
 docs/FinalProjectSubmissionTemplate.docx
+.vs/
+**/.vs/
+*.zip
+docs/*.pptx

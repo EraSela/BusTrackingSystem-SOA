@@ -5,13 +5,15 @@ import API from '../services/api'
 import { getCurrentUser } from '../utils/auth'
 
 const pickupPlaces = [
-  { name: 'Struga Bus Station', lat: 41.17799, lng: 20.67784 },
-  { name: 'Kicevo Bus Station', lat: 41.5122, lng: 20.9582 },
-  { name: 'Gostivar Bus Station', lat: 41.8006, lng: 20.9142 },
-  { name: 'SEEU Tetovo Campus', lat: 41.9957, lng: 20.9615 },
-  { name: 'Tetovo Bus Station', lat: 42.0069, lng: 20.9715 },
-  { name: 'Skopje Transport Center', lat: 41.9925, lng: 21.4314 }
+  { name: 'Struga Bus Station', lat: 41.17799, lng: 20.67784, order: 0 },
+  { name: 'Kicevo Bus Station', lat: 41.5122, lng: 20.9582, order: 1 },
+  { name: 'Gostivar Bus Station', lat: 41.8006, lng: 20.9142, order: 2 },
+  { name: 'SEEU Tetovo Campus', lat: 41.9957, lng: 20.9615, order: 3 },
+  { name: 'Tetovo Bus Station', lat: 42.0069, lng: 20.9715, order: 4 },
+  { name: 'Skopje Transport Center', lat: 41.9925, lng: 21.4314, order: 5 }
 ]
+
+const tripStatusLabels = ['Scheduled', 'Delayed', 'In progress', 'Completed', 'Cancelled']
 
 const emptyForm = {
   tripId: '',
@@ -33,6 +35,7 @@ export default function Reservations() {
   const isPassenger = getCurrentUser().role === 'Passenger'
   const [timetable, setTimetable] = useState([])
   const [activeTrips, setActiveTrips] = useState([])
+  const [liveLocations, setLiveLocations] = useState([])
   const [reservations, setReservations] = useState([])
   const [form, setForm] = useState(emptyForm)
   const [etas, setEtas] = useState({})
@@ -47,13 +50,14 @@ export default function Reservations() {
         API.get('/reservations/timetable'),
         API.get(isPassenger ? '/reservations/my' : '/reservations')
       ]
-      if (isPassenger) requests.push(API.get('/trips'))
+      if (isPassenger) requests.push(API.get('/trips'), API.get('/locations/live'))
 
-      const [tripResponse, reservationResponse, activeTripResponse] = await Promise.all(requests)
+      const [tripResponse, reservationResponse, activeTripResponse, liveLocationResponse] = await Promise.all(requests)
       setTimetable(tripResponse.data)
       setReservations(reservationResponse.data)
       if (isPassenger) {
         setActiveTrips(activeTripResponse.data.filter(trip => trip.status === 1 || trip.status === 2))
+        setLiveLocations(liveLocationResponse.data)
       }
     } catch (err) {
       setMessage({ error: err.response?.data?.message || 'Failed to load reservations', success: '' })
@@ -90,6 +94,16 @@ export default function Reservations() {
         )
       : null
   const selectedSeatLimit = selectedActiveTrip?.totalSeats || selectedSchedule?.totalSeats || 100
+  const selectedSeatsBooked = selectedActiveTrip?.reservationCount ?? 0
+  const selectedSeatsAvailable = selectedActiveTrip
+    ? Math.max(selectedActiveTrip.totalSeats - selectedSeatsBooked, 0)
+    : null
+  const selectedLiveLocation = selectedActiveTrip
+    ? liveLocations.find(location => location.busId === selectedActiveTrip.busId)
+    : null
+  const availablePickupPlaces = selectedActiveTrip
+    ? getBookablePickupPlaces(selectedActiveTrip, selectedLiveLocation)
+    : pickupPlaces
 
   const selectTrip = (value) => {
     if (value.startsWith('trip:')) {
@@ -97,7 +111,10 @@ export default function Reservations() {
         ...form,
         tripId: value.replace('trip:', ''),
         scheduleId: '',
-        seatNumber: ''
+        seatNumber: '',
+        pickupPlaceName: '',
+        pickupLatitude: '',
+        pickupLongitude: ''
       })
       return
     }
@@ -107,16 +124,27 @@ export default function Reservations() {
         ...form,
         tripId: '',
         scheduleId: value.replace('schedule:', ''),
-        seatNumber: ''
+        seatNumber: '',
+        pickupPlaceName: '',
+        pickupLatitude: '',
+        pickupLongitude: ''
       })
       return
     }
 
-    setForm({ ...form, tripId: '', scheduleId: '', seatNumber: '' })
+    setForm({
+      ...form,
+      tripId: '',
+      scheduleId: '',
+      seatNumber: '',
+      pickupPlaceName: '',
+      pickupLatitude: '',
+      pickupLongitude: ''
+    })
   }
 
   const selectPickup = (event) => {
-    const pickup = pickupPlaces.find(item => item.name === event.target.value)
+    const pickup = availablePickupPlaces.find(item => item.name === event.target.value)
     setForm({
       ...form,
       pickupPlaceName: pickup?.name || '',
@@ -184,6 +212,45 @@ export default function Reservations() {
 
         {isPassenger && <section className="mt-8 rounded-3xl border border-zinc-200 p-7">
           <h2 className="text-2xl font-bold">Book a trip</h2>
+          {activeTrips.length > 0 && (
+            <div className="mt-6">
+              <div className="flex flex-col gap-1 md:flex-row md:items-end md:justify-between">
+                <h3 className="text-lg font-bold">Trips in progress</h3>
+                <p className="text-sm text-zinc-500">Choose one if you want to join a bus already on the route.</p>
+              </div>
+              <div className="mt-3 grid gap-3 md:grid-cols-2">
+                {activeTrips.map(trip => {
+                  const seatsAvailable = Math.max(trip.totalSeats - (trip.reservationCount ?? 0), 0)
+                  const isSelected = Number(form.tripId) === trip.id
+
+                  return (
+                    <button
+                      key={trip.id}
+                      type="button"
+                      onClick={() => selectTrip(`trip:${trip.id}`)}
+                      className={`rounded-2xl border p-4 text-left transition ${isSelected ? 'border-black bg-zinc-50' : 'border-zinc-200 hover:border-zinc-400'}`}
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <p className="font-semibold text-zinc-950">{trip.routeName || 'Active trip'}</p>
+                          <p className="mt-1 text-sm text-zinc-500">
+                            {trip.busName} · {tripStatusLabels[trip.status] || 'Active'}
+                          </p>
+                        </div>
+                        <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+                          {seatsAvailable} seats left
+                        </span>
+                      </div>
+                      <div className="mt-3 grid gap-2 text-sm text-zinc-600 sm:grid-cols-2">
+                        <p>Departed {new Date(trip.scheduledDeparture).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                        <p>Arrives {new Date(trip.scheduledArrival).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
           <form onSubmit={submit} className="mt-6 grid gap-5 md:grid-cols-2">
             <label className="text-sm font-medium">
               Travel date for advance booking
@@ -213,7 +280,7 @@ export default function Reservations() {
                         {trip.routeName || 'Active trip'} - {new Date(trip.scheduledDeparture).toLocaleTimeString([], {
                           hour: '2-digit',
                           minute: '2-digit'
-                        })}
+                        })} - {Math.max(trip.totalSeats - (trip.reservationCount ?? 0), 0)} seats left
                       </option>
                     ))}
                   </optgroup>
@@ -239,14 +306,24 @@ export default function Reservations() {
             <label className="text-sm font-medium">
               Seat number
               <input required type="number" min="1" max={selectedSeatLimit} disabled={!selectedSchedule && !selectedActiveTrip} value={form.seatNumber} onChange={event => setForm({ ...form, seatNumber: event.target.value })} className="mt-2 w-full rounded-xl border px-4 py-3" />
+              {selectedActiveTrip && (
+                <span className="mt-2 block text-xs text-zinc-500">
+                  {selectedSeatsAvailable} of {selectedActiveTrip.totalSeats} seats available.
+                </span>
+              )}
             </label>
 
             <label className="text-sm font-medium">
               Pickup place
               <select required value={form.pickupPlaceName} onChange={selectPickup} className="mt-2 w-full rounded-xl border px-4 py-3">
                 <option value="">Select pickup place</option>
-                {pickupPlaces.map(place => <option key={place.name} value={place.name}>{place.name}</option>)}
+                {availablePickupPlaces.map(place => <option key={place.name} value={place.name}>{place.name}</option>)}
               </select>
+              {selectedActiveTrip && availablePickupPlaces.length < pickupPlaces.length && (
+                <span className="mt-2 block text-xs text-zinc-500">
+                  Pickup places already behind the active bus are hidden.
+                </span>
+              )}
             </label>
 
             <div className="rounded-xl bg-zinc-50 px-4 py-3 text-sm">
@@ -255,6 +332,9 @@ export default function Reservations() {
                   <p className="font-semibold">{selectedActiveTrip.routeName || 'Trip in progress'}</p>
                   <p className="text-zinc-600">
                     In progress now - expected arrival: {expectedArrival?.toLocaleString()}
+                  </p>
+                  <p className="mt-1 text-zinc-600">
+                    {selectedSeatsBooked} / {selectedActiveTrip.totalSeats} seats booked.
                   </p>
                 </>
               ) : selectedSchedule ? (
@@ -294,10 +374,11 @@ export default function Reservations() {
                   <button
                     type="button"
                     onClick={() => setSelectedQr(reservation)}
-                    className="rounded-2xl border border-zinc-200 p-2 transition hover:border-black focus:outline-none focus:ring-2 focus:ring-black"
+                    className="self-start rounded-2xl border border-zinc-200 p-2 text-center transition hover:border-black focus:outline-none focus:ring-2 focus:ring-black md:self-center"
                     aria-label="Open reservation QR code"
                   >
                     <QRCodeCanvas value={`${window.location.origin}/verify/${reservation.qrCode}`} size={112} level="H" includeMargin />
+                    <span className="mt-2 block text-xs font-semibold text-zinc-600">Tap to enlarge</span>
                   </button>
                 )}
               </article>
@@ -328,17 +409,56 @@ export default function Reservations() {
 function QrModal({ reservation, title = 'Reservation QR code', onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
-      <div className="w-full max-w-md rounded-3xl bg-white p-8 text-center">
+      <div className="w-full max-w-lg rounded-3xl bg-white p-8 text-center">
         <h2 className="text-2xl font-bold">{title}</h2>
         <p className="mt-2 font-semibold">{reservation.routeName}</p>
         <p className="mt-1 text-sm text-zinc-600">
           Seat {reservation.seatNumber} · {reservation.pickupPlaceName}
         </p>
-        <div className="mt-6 inline-block rounded-2xl border p-3">
-          <QRCodeCanvas value={`${window.location.origin}/verify/${reservation.qrCode}`} size={240} level="H" includeMargin />
+        <div className="mt-6 inline-block rounded-3xl border border-zinc-200 bg-white p-4 shadow-sm">
+          <QRCodeCanvas value={`${window.location.origin}/verify/${reservation.qrCode}`} size={280} level="H" includeMargin />
         </div>
+        <p className="mt-4 text-sm text-zinc-500">Show this screen to the driver for check-in.</p>
         <button onClick={onClose} className="mt-6 w-full rounded-xl bg-black py-3 font-semibold text-white">Done</button>
       </div>
     </div>
   )
+}
+
+function getBookablePickupPlaces(trip, liveLocation) {
+  if (!liveLocation) return pickupPlaces
+
+  const nearest = pickupPlaces.reduce((closest, place) => {
+    const distance = distanceKm(
+      liveLocation.latitude,
+      liveLocation.longitude,
+      place.lat,
+      place.lng
+    )
+
+    return distance < closest.distance ? { place, distance } : closest
+  }, { place: pickupPlaces[0], distance: Infinity }).place
+
+  if (trip.origin === 'Skopje' || trip.routeName?.startsWith('Skopje')) {
+    return pickupPlaces.filter(place => place.order <= nearest.order)
+  }
+
+  if (trip.origin === 'Tetovo' || trip.routeName?.startsWith('Tetovo')) {
+    return pickupPlaces.filter(place => place.order <= nearest.order && place.order <= 4)
+  }
+
+  return pickupPlaces.filter(place => place.order >= nearest.order)
+}
+
+function distanceKm(lat1, lon1, lat2, lon2) {
+  const toRadians = value => value * Math.PI / 180
+  const earthRadiusKm = 6371
+  const dLat = toRadians(lat2 - lat1)
+  const dLon = toRadians(lon2 - lon1)
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2)
+
+  return earthRadiusKm * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 }

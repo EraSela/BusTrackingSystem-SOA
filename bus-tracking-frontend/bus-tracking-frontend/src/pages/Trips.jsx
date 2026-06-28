@@ -193,7 +193,7 @@ export default function Trips() {
                     <div className="mt-4 grid gap-4 text-sm md:grid-cols-2">
                       <p><strong>Departure:</strong> {new Date(trip.scheduledDeparture).toLocaleString()}</p>
                       <p><strong>Expected arrival:</strong> {new Date(trip.scheduledArrival).toLocaleString()}</p>
-                      <p><strong>Reservations:</strong> {trip.reservationCount ?? 0}</p>
+                      <p><strong>Reservations:</strong> {trip.reservationCount ?? 0} / {trip.totalSeats}</p>
                     </div>
                   </div>
                   <div className="flex flex-wrap items-center gap-3 self-start lg:self-center">
@@ -232,7 +232,7 @@ export default function Trips() {
                     <div className="flex flex-col justify-between gap-2 md:flex-row md:items-center">
                       <h4 className="text-lg font-bold">Reservations</h4>
                       <span className="text-sm text-zinc-500">
-                        {trip.reservationCount ?? 0} {(trip.reservationCount ?? 0) === 1 ? 'seat booked' : 'seats booked'}
+                        {trip.reservationCount ?? 0} / {trip.totalSeats} seats booked
                       </span>
                     </div>
 
