@@ -94,8 +94,10 @@ namespace BusTrackingAPI.Services.Implementations
             if (trip.Status is TripStatus.Completed or TripStatus.Cancelled)
                 throw new InvalidOperationException("This trip is not available for reservations.");
 
-            if (trip.ScheduledDeparture <= DateTime.UtcNow)
-                throw new InvalidOperationException("Reservations must be made before the trip departs.");
+            if (trip.ScheduledDeparture <= DateTime.UtcNow &&
+                trip.Status is not (TripStatus.InProgress or TripStatus.Delayed))
+                throw new InvalidOperationException(
+                    "Reservations are available before departure or while the trip is in progress.");
 
             if (!trip.Bus.IsActive)
                 throw new InvalidOperationException("The assigned bus is not available.");

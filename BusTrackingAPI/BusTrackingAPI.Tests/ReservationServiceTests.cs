@@ -51,6 +51,43 @@ public class ReservationServiceTests
     }
 
     [Fact]
+    public async Task CreateReservation_ShouldCreateReservation_WhenTripIsInProgress()
+    {
+        var trip = CreateTrip(TripStatus.InProgress, DateTime.UtcNow.AddHours(-1));
+        var dto = CreateReservation();
+        var tripId = dto.TripId!.Value;
+        _tripRepo.Setup(repo => repo.GetByIdAsync(tripId)).ReturnsAsync(trip);
+        _reservationRepo.Setup(repo => repo.IsSeatTakenAsync(tripId, dto.SeatNumber)).ReturnsAsync(false);
+        _reservationRepo.Setup(repo => repo.CreateAsync(It.IsAny<Reservation>()))
+            .ReturnsAsync((Reservation reservation) =>
+            {
+                reservation.Id = 11;
+                reservation.Trip = trip;
+                reservation.User = CreateUser();
+                return reservation;
+            });
+
+        var result = await CreateService().CreateAsync(dto);
+
+        Assert.Equal(11, result.Id);
+        Assert.Equal(dto.TripId, result.TripId);
+    }
+
+    [Fact]
+    public async Task CreateReservation_ShouldThrowException_WhenScheduledTripAlreadyDeparted()
+    {
+        var dto = CreateReservation();
+        var tripId = dto.TripId!.Value;
+        _tripRepo.Setup(repo => repo.GetByIdAsync(tripId))
+            .ReturnsAsync(CreateTrip(TripStatus.Scheduled, DateTime.UtcNow.AddHours(-1)));
+
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(
+            () => CreateService().CreateAsync(dto));
+
+        Assert.Contains("before departure or while the trip is in progress", exception.Message);
+    }
+
+    [Fact]
     public async Task VerifyQrCode_ShouldReturnTrue_WhenQrCodeExists()
     {
         const string qrCode = "valid-qr";
@@ -93,9 +130,12 @@ public class ReservationServiceTests
         PickupLongitude = 20.67784
     };
 
-    private static Trip CreateTrip(TripStatus status = TripStatus.Scheduled)
+    private static Trip CreateTrip(
+        TripStatus status = TripStatus.Scheduled,
+        DateTime? scheduledDeparture = null)
     {
         var bus = new Bus { Id = 1, Name = "Test Bus", PlateNumber = "TEST-01", TotalSeats = 40, IsActive = true };
+        var departure = scheduledDeparture ?? DateTime.UtcNow.AddDays(1);
         return new Trip
         {
             Id = 1,
@@ -103,8 +143,8 @@ public class ReservationServiceTests
             Bus = bus,
             DriverId = 1,
             DeviceId = "SIM808_01",
-            ScheduledDeparture = DateTime.UtcNow.AddDays(1),
-            ScheduledArrival = DateTime.UtcNow.AddDays(1).AddHours(3),
+            ScheduledDeparture = departure,
+            ScheduledArrival = departure.AddHours(3),
             Status = status
         };
     }

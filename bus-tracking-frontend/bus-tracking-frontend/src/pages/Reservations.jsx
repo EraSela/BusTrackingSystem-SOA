@@ -14,6 +14,7 @@ const pickupPlaces = [
 ]
 
 const emptyForm = {
+  tripId: '',
   scheduleId: '',
   travelDate: '',
   seatNumber: '',
@@ -31,6 +32,7 @@ const todayValue = () => {
 export default function Reservations() {
   const isPassenger = getCurrentUser().role === 'Passenger'
   const [timetable, setTimetable] = useState([])
+  const [activeTrips, setActiveTrips] = useState([])
   const [reservations, setReservations] = useState([])
   const [form, setForm] = useState(emptyForm)
   const [etas, setEtas] = useState({})
@@ -40,12 +42,18 @@ export default function Reservations() {
 
   const loadData = useCallback(async () => {
     try {
-      const [tripResponse, reservationResponse] = await Promise.all([
+      const requests = [
         API.get('/reservations/timetable'),
         API.get(isPassenger ? '/reservations/my' : '/reservations')
-      ])
+      ]
+      if (isPassenger) requests.push(API.get('/trips'))
+
+      const [tripResponse, reservationResponse, activeTripResponse] = await Promise.all(requests)
       setTimetable(tripResponse.data)
       setReservations(reservationResponse.data)
+      if (isPassenger) {
+        setActiveTrips(activeTripResponse.data.filter(trip => trip.status === 1 || trip.status === 2))
+      }
     } catch (err) {
       setMessage({ error: err.response?.data?.message || 'Failed to load reservations', success: '' })
     }
@@ -57,21 +65,54 @@ export default function Reservations() {
   }, [loadData])
 
   const selectedSchedule = timetable.find(item => item.id === form.scheduleId)
+  const selectedActiveTrip = activeTrips.find(item => item.id === Number(form.tripId))
+  const selectedTripValue = form.tripId
+    ? `trip:${form.tripId}`
+    : form.scheduleId
+      ? `schedule:${form.scheduleId}`
+      : ''
   const selectedDay = form.travelDate
     ? new Date(`${form.travelDate}T12:00:00`).getDay()
     : null
   const availableSchedules = selectedDay === null
-    ? timetable
+    ? []
     : timetable.filter(item =>
         item.availableDays.includes(selectedDay) &&
         new Date(`${form.travelDate}T${item.departureTime}:00`) > new Date()
       )
-  const expectedArrival = selectedSchedule && form.travelDate
-    ? new Date(
-        new Date(`${form.travelDate}T${selectedSchedule.departureTime}:00`).getTime() +
-        selectedSchedule.expectedDurationMinutes * 60000
-      )
-    : null
+  const expectedArrival = selectedActiveTrip
+    ? new Date(selectedActiveTrip.scheduledArrival)
+    : selectedSchedule && form.travelDate
+      ? new Date(
+          new Date(`${form.travelDate}T${selectedSchedule.departureTime}:00`).getTime() +
+          selectedSchedule.expectedDurationMinutes * 60000
+        )
+      : null
+  const selectedSeatLimit = selectedActiveTrip?.totalSeats || selectedSchedule?.totalSeats || 100
+
+  const selectTrip = (value) => {
+    if (value.startsWith('trip:')) {
+      setForm({
+        ...form,
+        tripId: value.replace('trip:', ''),
+        scheduleId: '',
+        seatNumber: ''
+      })
+      return
+    }
+
+    if (value.startsWith('schedule:')) {
+      setForm({
+        ...form,
+        tripId: '',
+        scheduleId: value.replace('schedule:', ''),
+        seatNumber: ''
+      })
+      return
+    }
+
+    setForm({ ...form, tripId: '', scheduleId: '', seatNumber: '' })
+  }
 
   const selectPickup = (event) => {
     const pickup = pickupPlaces.find(item => item.name === event.target.value)
@@ -89,8 +130,9 @@ export default function Reservations() {
     setMessage({ error: '', success: '' })
     try {
       const response = await API.post('/reservations', {
-        scheduleId: form.scheduleId,
-        travelDate: form.travelDate,
+        tripId: form.tripId ? Number(form.tripId) : null,
+        scheduleId: form.tripId ? null : form.scheduleId,
+        travelDate: form.tripId ? null : form.travelDate,
         seatNumber: Number(form.seatNumber),
         pickupPlaceName: form.pickupPlaceName,
         pickupLatitude: Number(form.pickupLatitude),
@@ -131,7 +173,7 @@ export default function Reservations() {
       <Navbar />
       <main className="mx-auto max-w-7xl px-6 py-10">
         <h1 className="text-5xl font-bold text-zinc-950">Reservations</h1>
-        <p className="mt-4 text-lg text-zinc-600">Choose a scheduled departure, seat and pickup point.</p>
+        <p className="mt-4 text-lg text-zinc-600">Choose a future departure or a trip already in progress, then pick your seat and pickup point.</p>
 
         {(message.error || message.success) && (
           <div className={`mt-6 rounded-xl border px-4 py-3 ${message.error ? 'border-red-200 bg-red-50 text-red-700' : 'border-green-200 bg-green-50 text-green-700'}`}>
@@ -140,18 +182,18 @@ export default function Reservations() {
         )}
 
         {isPassenger && <section className="mt-8 rounded-3xl border border-zinc-200 p-7">
-          <h2 className="text-2xl font-bold">Book a scheduled trip</h2>
+          <h2 className="text-2xl font-bold">Book a trip</h2>
           <form onSubmit={submit} className="mt-6 grid gap-5 md:grid-cols-2">
             <label className="text-sm font-medium">
-              Travel date
+              Travel date for advance booking
               <input
-                required
                 type="date"
                 min={todayValue()}
                 value={form.travelDate}
                 onChange={event => setForm({
                   ...form,
                   travelDate: event.target.value,
+                  tripId: '',
                   scheduleId: '',
                   seatNumber: ''
                 })}
@@ -160,20 +202,42 @@ export default function Reservations() {
             </label>
 
             <label className="text-sm font-medium">
-              Timetable departure
-              <select required disabled={!form.travelDate} value={form.scheduleId} onChange={event => setForm({ ...form, scheduleId: event.target.value, seatNumber: '' })} className="mt-2 w-full rounded-xl border px-4 py-3">
-                <option value="">Select a departure</option>
-                {availableSchedules.map(item => (
-                  <option key={item.id} value={item.id}>
-                    {item.routeName} - {item.departureTime}
-                  </option>
-                ))}
+              Trip
+              <select required value={selectedTripValue} onChange={event => selectTrip(event.target.value)} className="mt-2 w-full rounded-xl border px-4 py-3">
+                <option value="">Select a trip</option>
+                {activeTrips.length > 0 && (
+                  <optgroup label="In progress now">
+                    {activeTrips.map(trip => (
+                      <option key={trip.id} value={`trip:${trip.id}`}>
+                        {trip.routeName || 'Active trip'} - {new Date(trip.scheduledDeparture).toLocaleTimeString([], {
+                          hour: '2-digit',
+                          minute: '2-digit'
+                        })}
+                      </option>
+                    ))}
+                  </optgroup>
+                )}
+                {availableSchedules.length > 0 && (
+                  <optgroup label="Future departures">
+                    {availableSchedules.map(item => (
+                      <option key={item.id} value={`schedule:${item.id}`}>
+                        {item.routeName} - {item.departureTime}
+                      </option>
+                    ))}
+                  </optgroup>
+                )}
+                {!form.travelDate && activeTrips.length === 0 && (
+                  <option disabled value="">Select a travel date to see future departures</option>
+                )}
+                {form.travelDate && availableSchedules.length === 0 && activeTrips.length === 0 && (
+                  <option disabled value="">No bookable trips for this date</option>
+                )}
               </select>
             </label>
 
             <label className="text-sm font-medium">
               Seat number
-              <input required type="number" min="1" max={selectedSchedule?.totalSeats || 100} disabled={!selectedSchedule} value={form.seatNumber} onChange={event => setForm({ ...form, seatNumber: event.target.value })} className="mt-2 w-full rounded-xl border px-4 py-3" />
+              <input required type="number" min="1" max={selectedSeatLimit} disabled={!selectedSchedule && !selectedActiveTrip} value={form.seatNumber} onChange={event => setForm({ ...form, seatNumber: event.target.value })} className="mt-2 w-full rounded-xl border px-4 py-3" />
             </label>
 
             <label className="text-sm font-medium">
@@ -185,14 +249,21 @@ export default function Reservations() {
             </label>
 
             <div className="rounded-xl bg-zinc-50 px-4 py-3 text-sm">
-              {selectedSchedule ? (
+              {selectedActiveTrip ? (
+                <>
+                  <p className="font-semibold">{selectedActiveTrip.routeName || 'Trip in progress'}</p>
+                  <p className="text-zinc-600">
+                    In progress now - expected arrival: {expectedArrival?.toLocaleString()}
+                  </p>
+                </>
+              ) : selectedSchedule ? (
                 <>
                   <p className="font-semibold">{selectedSchedule.routeName}</p>
                   <p className="text-zinc-600">
                     Expected arrival: {expectedArrival?.toLocaleString()}
                   </p>
                 </>
-              ) : 'Select a date and departure to see trip details.'}
+              ) : 'Select an active trip or choose a date for future departures.'}
             </div>
 
             <button disabled={loading} className="rounded-xl bg-black px-5 py-3 font-semibold text-white md:col-span-2">
