@@ -37,6 +37,7 @@ export default function Reservations() {
   const [form, setForm] = useState(emptyForm)
   const [etas, setEtas] = useState({})
   const [confirmed, setConfirmed] = useState(null)
+  const [selectedQr, setSelectedQr] = useState(null)
   const [message, setMessage] = useState({ error: '', success: '' })
   const [loading, setLoading] = useState(false)
 
@@ -290,7 +291,14 @@ export default function Reservations() {
                   </div>
                 </div>
                 {reservation.qrCode && (
-                  <QRCodeCanvas value={`${window.location.origin}/verify/${reservation.qrCode}`} size={112} level="H" includeMargin />
+                  <button
+                    type="button"
+                    onClick={() => setSelectedQr(reservation)}
+                    className="rounded-2xl border border-zinc-200 p-2 transition hover:border-black focus:outline-none focus:ring-2 focus:ring-black"
+                    aria-label="Open reservation QR code"
+                  >
+                    <QRCodeCanvas value={`${window.location.origin}/verify/${reservation.qrCode}`} size={112} level="H" includeMargin />
+                  </button>
                 )}
               </article>
             ))}
@@ -299,18 +307,38 @@ export default function Reservations() {
         </section>
       </main>
 
-      {confirmed && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
-          <div className="w-full max-w-md rounded-3xl bg-white p-8 text-center">
-            <h2 className="text-2xl font-bold">Reservation confirmed</h2>
-            <p className="mt-2">{confirmed.routeName}</p>
-            <div className="mt-6 inline-block rounded-2xl border p-3">
-              <QRCodeCanvas value={`${window.location.origin}/verify/${confirmed.qrCode}`} size={180} level="H" includeMargin />
-            </div>
-            <button onClick={() => setConfirmed(null)} className="mt-6 w-full rounded-xl bg-black py-3 font-semibold text-white">Done</button>
-          </div>
-        </div>
+      {selectedQr && (
+        <QrModal
+          reservation={selectedQr}
+          onClose={() => setSelectedQr(null)}
+        />
       )}
+
+      {confirmed && (
+        <QrModal
+          reservation={confirmed}
+          title="Reservation confirmed"
+          onClose={() => setConfirmed(null)}
+        />
+      )}
+    </div>
+  )
+}
+
+function QrModal({ reservation, title = 'Reservation QR code', onClose }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+      <div className="w-full max-w-md rounded-3xl bg-white p-8 text-center">
+        <h2 className="text-2xl font-bold">{title}</h2>
+        <p className="mt-2 font-semibold">{reservation.routeName}</p>
+        <p className="mt-1 text-sm text-zinc-600">
+          Seat {reservation.seatNumber} · {reservation.pickupPlaceName}
+        </p>
+        <div className="mt-6 inline-block rounded-2xl border p-3">
+          <QRCodeCanvas value={`${window.location.origin}/verify/${reservation.qrCode}`} size={240} level="H" includeMargin />
+        </div>
+        <button onClick={onClose} className="mt-6 w-full rounded-xl bg-black py-3 font-semibold text-white">Done</button>
+      </div>
     </div>
   )
 }
