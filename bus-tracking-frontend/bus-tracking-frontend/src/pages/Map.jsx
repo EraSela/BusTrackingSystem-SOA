@@ -29,6 +29,20 @@ const formatNumber = (value, decimals = 1) => {
   return Number(value).toFixed(decimals)
 }
 
+const formatUpdatedAgo = (value) => {
+  const updatedAt = new Date(value)
+  if (Number.isNaN(updatedAt.getTime())) return 'N/A'
+
+  const seconds = Math.max(0, Math.floor((Date.now() - updatedAt.getTime()) / 1000))
+  if (seconds < 60) return `${seconds} sec ago`
+
+  const minutes = Math.floor(seconds / 60)
+  if (minutes < 60) return `${minutes} min ago`
+
+  const hours = Math.floor(minutes / 60)
+  return `${hours} hr ago`
+}
+
 function MapFocus({ bus }) {
   const map = useMap()
 
@@ -151,7 +165,7 @@ export default function Map() {
                     <div>
                       <p className="text-gray-500">Last update</p>
                       <p className="font-semibold text-zinc-900">
-                        {new Date(bus.lastUpdated).toLocaleTimeString()}
+                        Updated {formatUpdatedAgo(bus.lastUpdated)}
                       </p>
                     </div>
                   </div>
@@ -194,7 +208,7 @@ export default function Map() {
                     </p>
 
                     <p>
-                      Updated: {new Date(bus.lastUpdated).toLocaleTimeString()}
+                      Updated: {formatUpdatedAgo(bus.lastUpdated)}
                     </p>
                   </div>
                 </Popup>

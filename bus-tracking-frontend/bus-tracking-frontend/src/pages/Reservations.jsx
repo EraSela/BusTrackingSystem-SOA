@@ -364,9 +364,9 @@ export default function Reservations() {
                   <p className="mt-1">Departure: {new Date(reservation.scheduledDeparture).toLocaleString()}</p>
                   <p>Seat {reservation.seatNumber} · {reservation.pickupPlaceName}</p>
                   <div className="mt-4 flex gap-4">
-                    <button onClick={() => getEta(reservation.id)} className="font-semibold underline">
-                      {etas[reservation.id] ? `${etas[reservation.id].estimatedMinutes} min away` : 'Check ETA'}
-                    </button>
+	                    <button onClick={() => getEta(reservation.id)} className="font-semibold underline">
+	                      {etas[reservation.id] ? `Approx. ${etas[reservation.id].estimatedMinutes} min away` : 'Check ETA'}
+	                    </button>
                     <button onClick={() => remove(reservation.id)} className="font-semibold text-red-600">Delete</button>
                   </div>
                 </div>
