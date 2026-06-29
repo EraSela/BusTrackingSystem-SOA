@@ -66,7 +66,12 @@ export default function Map() {
   const fetchLive = async () => {
     try {
       const res = await API.get('/locations/live')
-      setBuses(res.data)
+      setBuses(res.data.map(bus => ({
+        ...bus,
+        heading: bus.heading !== null && bus.heading !== undefined
+          ? formatNumber(bus.heading)
+          : bus.heading,
+      })))
     } catch (err) {
       console.error('Failed to fetch live locations', err)
     }
