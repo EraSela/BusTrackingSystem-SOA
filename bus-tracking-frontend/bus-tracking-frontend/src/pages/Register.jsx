@@ -15,6 +15,7 @@ export default function Register() {
 
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -101,8 +102,9 @@ export default function Register() {
               Password
             </label>
 
+            <div className="relative">
             <input
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               required
               value={form.password}
               onChange={(e) =>
@@ -111,9 +113,18 @@ export default function Register() {
                   password: e.target.value
                 })
               }
-              className="w-full border border-zinc-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-black"
+              className="w-full border border-zinc-300 rounded-xl px-4 py-2.5 pr-12 focus:outline-none focus:ring-2 focus:ring-black"
               placeholder="••••••••"
             />
+              <button
+                type="button"
+                onClick={() => setShowPassword(value => !value)}
+                className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-zinc-900"
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+              </button>
+            </div>
           </div>
 
           <div>
@@ -157,5 +168,24 @@ export default function Register() {
         </p>
       </div>
     </div>
+  )
+}
+
+function EyeIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
+    </svg>
+  )
+}
+
+function EyeOffIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M3 3l18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M10.6 5.1A10.8 10.8 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-2.1 3.1M6.6 6.6C3.7 8.5 2 12 2 12s3.5 7 10 7a9.7 9.7 0 0 0 4.3-1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9.9 9.9A3 3 0 0 0 14.1 14.1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
   )
 }
