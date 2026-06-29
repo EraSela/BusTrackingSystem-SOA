@@ -12,22 +12,16 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 })
 
-const butterflyIcon = L.divIcon({
+const liveLocationIcon = L.divIcon({
   html: `
-    <div class="live-butterfly-marker" aria-hidden="true">
-      <svg viewBox="0 0 64 64" role="img" focusable="false">
-        <path class="butterfly-wing butterfly-wing-left" d="M30 31C22 11 8 8 4 18c-4 11 6 24 23 24 2-3 3-7 3-11Z" />
-        <path class="butterfly-wing butterfly-wing-right" d="M34 31c8-20 22-23 26-13 4 11-6 24-23 24-2-3-3-7-3-11Z" />
-        <path class="butterfly-wing butterfly-wing-left lower" d="M29 38C19 38 11 44 13 53c2 8 15 6 19-8-1-3-2-5-3-7Z" />
-        <path class="butterfly-wing butterfly-wing-right lower" d="M35 38c10 0 18 6 16 15-2 8-15 6-19-8 1-3 2-5 3-7Z" />
-        <path class="butterfly-body" d="M32 26c3 0 5 5 5 12s-2 14-5 14-5-7-5-14 2-12 5-12Z" />
-        <path class="butterfly-antenna" d="M30 27c-2-5-5-8-10-9M34 27c2-5 5-8 10-9" />
-      </svg>
+    <div class="live-location-marker" aria-hidden="true">
+      <span class="live-location-pulse"></span>
+      <span class="live-location-dot"></span>
     </div>
   `,
   className: '',
-  iconSize: [54, 54],
-  iconAnchor: [27, 31],
+  iconSize: [44, 44],
+  iconAnchor: [22, 22],
 })
 
 const formatNumber = (value, decimals = 1) => {
@@ -159,7 +153,7 @@ export default function Map() {
               <Marker
                 key={bus.busId}
                 position={[bus.latitude, bus.longitude]}
-                icon={butterflyIcon}
+                icon={liveLocationIcon}
               >
                 <Popup>
                   <div className="text-sm min-w-48">
