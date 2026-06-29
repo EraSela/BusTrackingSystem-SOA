@@ -33,6 +33,20 @@
             return (int)Math.Ceiling((distanceKm / speedKmh) * 60);
         }
 
+        public static int EstimateRoadMinutesAway(double straightLineDistanceKm, double? currentSpeedKmh)
+        {
+            const double roadDistanceFactor = 1.6;
+            const double defaultBusSpeedKmh = 45;
+            const double minReliableSpeedKmh = 30;
+            const double maxReliableSpeedKmh = 65;
+
+            var speedKmh = currentSpeedKmh.HasValue && currentSpeedKmh.Value >= minReliableSpeedKmh
+                ? Math.Min(currentSpeedKmh.Value, maxReliableSpeedKmh)
+                : defaultBusSpeedKmh;
+
+            return EstimateMinutesAway(straightLineDistanceKm * roadDistanceFactor, speedKmh);
+        }
+
         private static double ToRadians(double degrees)
         {
             return degrees * Math.PI / 180;

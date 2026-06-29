@@ -124,10 +124,10 @@ namespace BusTrackingAPI.Services.Implementations
                 latest.Longitude,
                 reservation.PickupLatitude,
                 reservation.PickupLongitude);
-            var speedKmh = latest.Speed.HasValue && latest.Speed.Value >= 10
-                ? latest.Speed.Value
-                : 35;
-            var minutes = GeoHelper.EstimateMinutesAway(distanceKm, speedKmh);
+            var speedKmh = latest.Speed.HasValue && latest.Speed.Value >= 30
+                ? Math.Min(latest.Speed.Value, 65)
+                : 45;
+            var minutes = GeoHelper.EstimateRoadMinutesAway(distanceKm, latest.Speed);
 
             return new EtaDTO
             {
@@ -153,10 +153,7 @@ namespace BusTrackingAPI.Services.Implementations
                     location.Longitude,
                     reservation.PickupLatitude,
                     reservation.PickupLongitude);
-                var speedKmh = location.Speed.HasValue && location.Speed.Value > 0
-                    ? location.Speed.Value
-                    : 40;
-                var minutesAway = GeoHelper.EstimateMinutesAway(distanceKm, speedKmh);
+                var minutesAway = GeoHelper.EstimateRoadMinutesAway(distanceKm, location.Speed);
 
                 if (minutesAway > 10 ||
                     await _notificationRepo.ExistsAsync(
