@@ -141,10 +141,10 @@ export default function AdminBuses() {
               </label>
             )}
 
-            <button
-              disabled={loading}
-              className="rounded-xl bg-black px-5 py-3 font-semibold text-white disabled:opacity-50"
-            >
+	            <button
+	              disabled={loading}
+	              className="self-end justify-self-start rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-zinc-800 disabled:opacity-50"
+	            >
               {loading ? 'Saving...' : editingId ? 'Save changes' : 'Create bus'}
             </button>
           </form>
