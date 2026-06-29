@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import Navbar from '../components/Navbar'
@@ -29,8 +29,25 @@ const formatNumber = (value, decimals = 1) => {
   return Number(value).toFixed(decimals)
 }
 
+function MapFocus({ bus }) {
+  const map = useMap()
+
+  useEffect(() => {
+    if (!bus?.latitude || !bus?.longitude) return
+
+    map.flyTo([bus.latitude, bus.longitude], Math.max(map.getZoom(), 14), {
+      animate: true,
+      duration: 0.8,
+    })
+  }, [bus?.busId, bus?.latitude, bus?.longitude, map])
+
+  return null
+}
+
 export default function Map() {
   const [buses, setBuses] = useState([])
+  const [selectedBusId, setSelectedBusId] = useState(null)
+  const selectedBus = buses.find(bus => bus.busId === selectedBusId)
 
   const fetchLive = async () => {
     try {
@@ -91,9 +108,15 @@ export default function Map() {
               </div>
             ) : (
               buses.map(bus => (
-                <div
+                <button
+                  type="button"
                   key={bus.busId}
-                  className="bg-zinc-50 border border-zinc-200 rounded-3xl p-6 hover:bg-white hover:shadow-md transition"
+                  onClick={() => setSelectedBusId(bus.busId)}
+                  className={`w-full text-left border rounded-3xl p-6 transition focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    selectedBusId === bus.busId
+                      ? 'bg-blue-50 border-blue-500 shadow-md'
+                      : 'bg-zinc-50 border-zinc-200 hover:bg-white hover:shadow-md'
+                  }`}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
@@ -132,7 +155,7 @@ export default function Map() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </button>
               ))
             )}
           </div>
@@ -148,6 +171,7 @@ export default function Map() {
               attribution="&copy; OpenStreetMap contributors"
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
+            <MapFocus bus={selectedBus} />
 
             {buses.map(bus => (
               <Marker
