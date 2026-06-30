@@ -128,13 +128,13 @@ export default function AdminUsers() {
           </div>
         )}
 
-        <section className="mb-10 rounded-3xl border border-zinc-200 bg-white p-7">
+        <section className="mx-auto mb-10 max-w-xl rounded-3xl border border-zinc-200 bg-white p-7">
           <div className="mb-6 flex items-center justify-between">
             <h2 className="text-2xl font-bold">{editingId ? 'Edit user' : 'Add user'}</h2>
             {editingId && <button onClick={resetForm} className="text-sm font-semibold underline">Cancel editing</button>}
           </div>
 
-	          <form onSubmit={submit} className="max-w-md space-y-4">
+	          <form onSubmit={submit} className="mx-auto max-w-md space-y-4">
 	            <Field label="Full name" value={form.fullName} onChange={value => setForm({ ...form, fullName: value })} />
 	            <Field label="Email" type="email" value={form.email} onChange={value => setForm({ ...form, email: value })} />
 	            {!editingId && (
