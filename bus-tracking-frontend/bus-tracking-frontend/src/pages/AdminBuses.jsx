@@ -125,32 +125,28 @@ export default function AdminBuses() {
             )}
           </div>
 
-          <form onSubmit={submit}>
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
-              <Field label="Bus name" value={form.name} onChange={value => setForm({ ...form, name: value })} />
-              <Field label="Plate number" value={form.plateNumber} onChange={value => setForm({ ...form, plateNumber: value })} />
-              <Field label="Total seats" type="number" min="1" max="100" value={form.totalSeats} onChange={value => setForm({ ...form, totalSeats: value })} />
+          <form onSubmit={submit} className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <Field label="Bus name" value={form.name} onChange={value => setForm({ ...form, name: value })} />
+            <Field label="Plate number" value={form.plateNumber} onChange={value => setForm({ ...form, plateNumber: value })} />
+            <Field label="Total seats" type="number" min="1" max="100" value={form.totalSeats} onChange={value => setForm({ ...form, totalSeats: value })} />
 
-              {editingId && (
-                <label className="flex items-center gap-3 rounded-xl border border-zinc-200 px-4 py-3 text-sm font-medium">
-                  <input
-                    type="checkbox"
-                    checked={form.isActive}
-                    onChange={event => setForm({ ...form, isActive: event.target.checked })}
-                  />
-                  Available for bookings
-                </label>
-              )}
-            </div>
+            {editingId && (
+              <label className="flex items-center gap-3 rounded-xl border border-zinc-200 px-4 py-3 text-sm font-medium">
+                <input
+                  type="checkbox"
+                  checked={form.isActive}
+                  onChange={event => setForm({ ...form, isActive: event.target.checked })}
+                />
+                Available for bookings
+              </label>
+            )}
 
-            <div className="mt-5 flex justify-end">
-              <button
-                disabled={loading}
-                className="rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-zinc-800 disabled:opacity-50"
-              >
-                {loading ? 'Saving...' : editingId ? 'Save changes' : 'Create bus'}
-              </button>
-            </div>
+            <button
+              disabled={loading}
+              className="self-end justify-self-start rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-zinc-800 disabled:opacity-50"
+            >
+              {loading ? 'Saving...' : editingId ? 'Save changes' : 'Create bus'}
+            </button>
           </form>
         </section>
 

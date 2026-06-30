@@ -134,38 +134,43 @@ export default function AdminUsers() {
             {editingId && <button onClick={resetForm} className="text-sm font-semibold underline">Cancel editing</button>}
           </div>
 
-          <form onSubmit={submit} className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
-            <Field label="Full name" value={form.fullName} onChange={value => setForm({ ...form, fullName: value })} />
-            <Field label="Email" type="email" value={form.email} onChange={value => setForm({ ...form, email: value })} />
-            {!editingId && (
-              <Field label="Password" type="password" minLength="6" value={form.password} onChange={value => setForm({ ...form, password: value })} />
-            )}
-            <Field label="Phone number" required={false} value={form.phoneNumber} onChange={value => setForm({ ...form, phoneNumber: value })} />
-
-            <label className="text-sm font-medium text-zinc-700">
-              Role
-              <select
-                value={form.role}
-                onChange={event => setForm({ ...form, role: event.target.value })}
-                className="mt-2 w-full rounded-xl border border-zinc-300 bg-white px-4 py-3"
-              >
-                {roles.map((role, index) => <option key={role} value={index}>{role}</option>)}
-              </select>
-            </label>
-
-            <label className="flex items-center gap-3 rounded-xl border border-zinc-200 px-4 py-3 text-sm font-medium">
-              <input
-                type="checkbox"
-                checked={form.isActive}
-                onChange={event => setForm({ ...form, isActive: event.target.checked })}
-              />
-              Account active
-            </label>
-
-            <button disabled={loading} className="rounded-xl bg-black px-5 py-3 font-semibold text-white disabled:opacity-50">
-              {loading ? 'Saving...' : editingId ? 'Save changes' : 'Create user'}
-            </button>
-          </form>
+	          <form onSubmit={submit} className="max-w-md space-y-4">
+	            <Field label="Full name" value={form.fullName} onChange={value => setForm({ ...form, fullName: value })} />
+	            <Field label="Email" type="email" value={form.email} onChange={value => setForm({ ...form, email: value })} />
+	            {!editingId && (
+	              <Field label="Password" type="password" minLength="6" value={form.password} onChange={value => setForm({ ...form, password: value })} />
+	            )}
+	            <Field label="Phone number" required={false} value={form.phoneNumber} onChange={value => setForm({ ...form, phoneNumber: value })} />
+	
+	            <label className="block text-sm font-medium text-zinc-700">
+	              Role
+	              <select
+	                value={form.role}
+	                onChange={event => setForm({ ...form, role: event.target.value })}
+	                className="mt-2 w-full rounded-xl border border-zinc-300 bg-white px-4 py-3"
+	              >
+	                {roles.map((role, index) => <option key={role} value={index}>{role}</option>)}
+	              </select>
+	            </label>
+	
+	            <label className="flex items-center gap-3 rounded-xl border border-zinc-200 px-4 py-3 text-sm font-medium">
+	              <input
+	                type="checkbox"
+	                checked={form.isActive}
+	                onChange={event => setForm({ ...form, isActive: event.target.checked })}
+	              />
+	              Account active
+	            </label>
+	
+	            <div className="flex justify-end">
+	              <button
+	                disabled={loading}
+	                className="rounded-lg bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-zinc-800 disabled:opacity-50"
+	              >
+	                {loading ? 'Saving...' : editingId ? 'Save changes' : 'Create user'}
+	              </button>
+	            </div>
+	          </form>
         </section>
 
         <section className="overflow-hidden rounded-3xl border border-zinc-200 bg-white">
